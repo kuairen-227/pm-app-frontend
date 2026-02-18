@@ -5,7 +5,11 @@
   "postStartCommand": "pnpm install",
   "customizations": {
     "vscode": {
-      "extensions": ["biomejs.biome", "streetsidesoftware.code-spell-checker"]
+      "extensions": [
+        "biomejs.biome",
+        "github.vscode-github-actions",
+        "streetsidesoftware.code-spell-checker"
+      ]
     }
   }
 }
