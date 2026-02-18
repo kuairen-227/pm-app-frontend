@@ -1,0 +1,11 @@
+{
+  "name": "pm-app-frontend",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:24-bookworm",
+  "forwardPorts": [3000],
+  "postStartCommand": "pnpm install",
+  "customizations": {
+    "vscode": {
+      "extensions": ["biomejs.biome", "streetsidesoftware.code-spell-checker"]
+    }
+  }
+}

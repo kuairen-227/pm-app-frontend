@@ -1,6 +1,7 @@
 {
   // フォーマット設定
   "editor.formatOnSave": true,
+  "editor.defaultFormatter": "biomejs.biome",
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
