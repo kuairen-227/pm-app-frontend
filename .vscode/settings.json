@@ -1,5 +1,9 @@
 {
-    "conventionalCommits.scopes": [
-        "workspace"
-    ]
+  // フォーマット設定
+  "editor.formatOnSave": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+  // 拡張機能設定
+  "conventionalCommits.scopes": ["workspace"]
 }
