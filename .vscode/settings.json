@@ -6,5 +6,5 @@
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
   // 拡張機能設定
-  "conventionalCommits.scopes": ["workspace"]
+  "conventionalCommits.scopes": ["workspace", "package"]
 }
