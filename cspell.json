@@ -3,7 +3,15 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": ["bradlc", "oklch", "shadcn", "Turbopack", "unrs", "vercel"],
+  "words": [
+    "bradlc",
+    "commitlint",
+    "oklch",
+    "shadcn",
+    "Turbopack",
+    "unrs",
+    "vercel"
+  ],
   "ignoreWords": [],
   "import": []
 }
