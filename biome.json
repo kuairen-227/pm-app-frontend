@@ -18,6 +18,11 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "style": {
+        "noProcessEnv": {
+          "level": "error"
+        }
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
