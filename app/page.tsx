@@ -1,9 +1,14 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { ThemeToggle } from "./_components/theme-toggle";
 
 export default function Home() {
   return (
     <main className="mx-auto max-w-4xl py-12 space-y-12">
+      <div className="flex justify-end">
+        <ThemeToggle />
+      </div>
+
       <h1 className="text-3xl font-semibold">UI Playground</h1>
 
       {/* Button */}
