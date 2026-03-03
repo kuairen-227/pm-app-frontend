@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-import Provider from "./provider";
+import AppProvider from "../components/providers/app-provider";
 
 const noto = Noto_Sans_JP({
   subsets: ["latin"],
@@ -18,9 +18,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="ja" className={noto.className}>
+    <html lang="ja" className={noto.className} suppressHydrationWarning>
       <body>
-        <Provider>{children}</Provider>
+        <AppProvider>{children}</AppProvider>
       </body>
     </html>
   );
