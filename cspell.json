@@ -3,11 +3,7 @@
   "ignorePaths": [],
   "dictionaryDefinitions": [],
   "dictionaries": [],
-  "words": [
-    "bradlc",
-    "shadcn",
-    "Turbopack"
-  ],
+  "words": ["bradlc", "oklch", "shadcn", "Turbopack"],
   "ignoreWords": [],
   "import": []
 }
