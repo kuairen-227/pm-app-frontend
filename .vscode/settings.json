@@ -9,6 +9,10 @@
   "files.insertFinalNewline": true,
   "files.trimFinalNewlines": true,
   "files.trimTrailingWhitespace": true,
+  // Tailwind CSS 設定
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
   // 拡張機能設定
   "conventionalCommits.scopes": ["workspace", "package", "design"]
 }
