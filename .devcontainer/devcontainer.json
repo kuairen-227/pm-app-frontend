@@ -9,7 +9,8 @@
         "biomejs.biome",
         "github.vscode-github-actions",
         "streetsidesoftware.code-spell-checker",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "vitest.explorer"
       ]
     }
   }
