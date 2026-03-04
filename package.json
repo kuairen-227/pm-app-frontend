@@ -50,5 +50,10 @@
     "pnpm": "^10.30.0",
     "npm": "❌ Please use pnpm instead of npm."
   },
-  "packageManager": "pnpm@10.30.0"
+  "packageManager": "pnpm@10.30.0",
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
 }
