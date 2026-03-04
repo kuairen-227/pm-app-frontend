@@ -15,6 +15,7 @@
     "check:fix": "biome check --write",
     "test": "vitest",
     "test:coverage": "vitest --coverage",
+    "test:ui": "vitest --ui",
     "prepare": "husky"
   },
   "dependencies": {
@@ -43,6 +44,7 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitest/ui": "4.0.18",
     "husky": "^9.1.7",
     "jsdom": "^28.1.0",
     "msw": "^2.12.10",
