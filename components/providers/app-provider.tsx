@@ -1,3 +1,4 @@
+import { MswProvider } from "./msw-provider";
 import QueryProvider from "./query-provider";
 import { ThemeProvider } from "./theme-provider";
 
@@ -13,7 +14,9 @@ export default function AppProvider({
       enableSystem
       disableTransitionOnChange
     >
-      <QueryProvider>{children}</QueryProvider>
+      <QueryProvider>
+        <MswProvider>{children}</MswProvider>
+      </QueryProvider>
     </ThemeProvider>
   );
 }

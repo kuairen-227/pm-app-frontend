@@ -11,9 +11,11 @@ export const env = createEnv({
       protocol:
         process.env.NEXT_PUBLIC_APP_ENV === "production" ? /^https/ : /^http/,
     }),
+    NEXT_PUBLIC_MOCK_ENABLED: z.boolean(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_APP_ENV: process.env.NEXT_PUBLIC_APP_ENV,
     NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+    NEXT_PUBLIC_MOCK_ENABLED: process.env.NEXT_PUBLIC_MOCK_ENABLED === "true",
   },
 });
