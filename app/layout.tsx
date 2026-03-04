@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Noto_Sans_JP } from "next/font/google";
 import "./globals.css";
-import AppProvider from "../components/providers/app-provider";
+import { AppProvider } from "@/components/providers";
 
 const noto = Noto_Sans_JP({
   subsets: ["latin"],
