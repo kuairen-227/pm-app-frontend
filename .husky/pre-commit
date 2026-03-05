@@ -1,1 +1,16 @@
-pnpm check
+#!/bin/sh
+echo "🔍 Running secret scan..."
+
+if ! pnpm exec secretlint . --secretlintignore .gitignore; then
+  echo "❌ Secret detected! Commit aborted."
+  exit 1
+fi
+
+echo "🧪 Running pnpm check..."
+
+if ! pnpm check; then
+  echo "❌ Check failed! Commit aborted."
+  exit 1
+fi
+
+echo "✅ All checks passed."
