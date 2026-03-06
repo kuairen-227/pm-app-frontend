@@ -17,5 +17,11 @@
     "strings": "on"
   },
   // 拡張機能設定
-  "conventionalCommits.scopes": ["workspace", "package", "design", "test"]
+  "conventionalCommits.scopes": [
+    "workspace",
+    "package",
+    "design",
+    "test",
+    "api"
+  ]
 }
