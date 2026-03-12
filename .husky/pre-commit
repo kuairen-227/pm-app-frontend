@@ -6,6 +6,13 @@ if ! pnpm exec secretlint . --secretlintignore .gitignore; then
   exit 1
 fi
 
+echo "🏷️ Running type check..."
+
+if ! pnpm typecheck; then
+  echo "❌ Type check failed! Commit aborted."
+  exit 1
+fi
+
 echo "🧪 Running pnpm check..."
 
 if ! pnpm check; then
