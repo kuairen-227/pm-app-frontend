@@ -16,7 +16,8 @@
     "test": "vitest",
     "test:coverage": "vitest --coverage",
     "test:ui": "vitest --ui",
-    "prepare": "husky"
+    "prepare": "husky",
+    "generate:open-api": "openapi-typescript http://host.docker.internal:5079/swagger/v1/swagger.json --output shared/types/open-api.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.2.0",
