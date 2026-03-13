@@ -341,6 +341,18 @@ export interface components {
             /** @description パスワード */
             password?: string;
         };
+        /** @description リフレッシュレスポンスDTO */
+        RefreshResponse: {
+            /**
+             * Format: guid
+             * @description ユーザーID
+             */
+            userId?: string;
+            /** @description アクセストークン */
+            accessToken?: string;
+            /** @description リフレッシュトークン */
+            refreshToken?: string;
+        };
         /** @description リフレッシュリクエストDTO */
         RefreshRequest: {
             /** @description リフレッシュトークン */
@@ -663,7 +675,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["LoginResponse"];
+                    "application/json": components["schemas"]["RefreshResponse"];
                 };
             };
             401: {
