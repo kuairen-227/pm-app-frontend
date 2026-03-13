@@ -18,10 +18,17 @@
   },
   // 拡張機能設定
   "conventionalCommits.scopes": [
-    "workspace",
-    "package",
+    // Folder
+    "api",
     "design",
+    "package",
     "test",
-    "api"
+    "workspace",
+    // Feature
+    "auth",
+    "user",
+    "project",
+    "ticket",
+    "notification"
   ]
 }
