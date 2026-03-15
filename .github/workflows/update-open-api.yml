@@ -71,6 +71,6 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         if: steps.diff.outputs.changed == 'true'
         with:
-          commit-message: chore: update openapi types
+          commit-message: "build(api): :label: update openapi types"
           title: Update OpenAPI Types
           branch: update-openapi-types
