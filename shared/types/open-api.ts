@@ -315,10 +315,6 @@ export interface components {
              * @description ユーザーID
              */
             userId?: string;
-            /** @description アクセストークン */
-            accessToken?: string;
-            /** @description リフレッシュトークン */
-            refreshToken?: string;
         };
         /** @description エラーレスポンスDTO */
         ErrorResponse: {
@@ -348,20 +344,6 @@ export interface components {
              * @description ユーザーID
              */
             userId?: string;
-            /** @description アクセストークン */
-            accessToken?: string;
-            /** @description リフレッシュトークン */
-            refreshToken?: string;
-        };
-        /** @description リフレッシュリクエストDTO */
-        RefreshRequest: {
-            /** @description リフレッシュトークン */
-            refreshToken?: string;
-        };
-        /** @description ログアウトリクエストDTO */
-        LogoutRequest: {
-            /** @description リフレッシュトークン */
-            refreshToken?: string;
         };
         ProjectDto: components["schemas"]["ProjectBaseDto"] & Record<string, never>;
         ProjectBaseDto: {
@@ -664,11 +646,7 @@ export interface operations {
             };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["RefreshRequest"];
-            };
-        };
+        requestBody?: never;
         responses: {
             200: {
                 headers: {
@@ -697,11 +675,7 @@ export interface operations {
             };
             cookie?: never;
         };
-        requestBody: {
-            content: {
-                "application/json": components["schemas"]["LogoutRequest"];
-            };
-        };
+        requestBody?: never;
         responses: {
             204: {
                 headers: {
