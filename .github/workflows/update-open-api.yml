@@ -1,0 +1,62 @@
+name: Update OpenAPI Types
+
+on:
+  repository_dispatch:
+    types: [backend-updated]
+
+permissions:
+  contents: read
+  actions: write
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "pnpm"
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Download swagger artifact
+        run: |
+          RUN_ID=$(curl -s \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/kuairen-227/pm-app-backend/actions/runs \
+            | jq '.workflow_runs[0].id')
+
+          curl -L \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/kuairen-227/pm-app-backend/actions/runs/$RUN_ID/artifacts \
+            -o artifacts.json
+
+          ARTIFACT_ID=$(jq '.artifacts[] | select(.name=="swagger") | .id' artifacts.json)
+
+          curl -L \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/kuairen-227/pm-app-backend/actions/artifacts/$ARTIFACT_ID/zip \
+            -o swagger.zip
+
+          unzip swagger.zip
+
+      - name: Generate types
+        run: |
+          npx openapi-typescript swagger.json \
+          -o src/api/generated.ts
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "chore: update openapi types"
+          title: "Update OpenAPI Types"
+          branch: update-openapi-types
