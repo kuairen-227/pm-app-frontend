@@ -52,7 +52,7 @@ jobs:
       - name: Generate types
         run: |
           npx openapi-typescript swagger.json \
-          -o src/api/generated.ts
+          -o shared/types/open-api.ts
 
       - name: Create PR
         uses: peter-evans/create-pull-request@v6
