@@ -4,8 +4,6 @@ import { DEFAULT_API_VERSION } from "@/shared/config/api";
 import type {
   LoginRequest,
   LoginResponse,
-  LogoutRequest,
-  RefreshRequest,
   RefreshResponse,
 } from "../types/api";
 
@@ -24,14 +22,11 @@ export async function login(body: LoginRequest): Promise<LoginResponse> {
   return data;
 }
 
-export async function refreshToken(
-  body: RefreshRequest,
-): Promise<RefreshResponse> {
+export async function refreshToken(): Promise<RefreshResponse> {
   const { response, data, error } = await apiClient.POST(
     "/api/v{version}/auth/refresh",
     {
       params: { path: { version: DEFAULT_API_VERSION } },
-      body,
     },
   );
 
@@ -41,12 +36,11 @@ export async function refreshToken(
   return data;
 }
 
-export async function logout(body: LogoutRequest): Promise<void> {
+export async function logout(): Promise<void> {
   const { response, error } = await apiClient.POST(
     "/api/v{version}/auth/logout",
     {
       params: { path: { version: DEFAULT_API_VERSION } },
-      body,
     },
   );
 

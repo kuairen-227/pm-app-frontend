@@ -4,8 +4,6 @@ import { login, logout, refreshToken } from "../api/auth";
 import type {
   LoginRequest,
   LoginResponse,
-  LogoutRequest,
-  RefreshRequest,
   RefreshResponse,
 } from "../types/api";
 
@@ -16,13 +14,13 @@ export function useLogin() {
 }
 
 export function useRefreshToken() {
-  return useMutation<RefreshResponse, ApiError, RefreshRequest>({
+  return useMutation<RefreshResponse, ApiError>({
     mutationFn: refreshToken,
   });
 }
 
 export function useLogout() {
-  return useMutation<void, ApiError, LogoutRequest>({
+  return useMutation<void, ApiError>({
     mutationFn: logout,
   });
 }
