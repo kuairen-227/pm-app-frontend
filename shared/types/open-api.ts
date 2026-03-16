@@ -55,6 +55,23 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/api/v{version}/auth/me": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /** ログインユーザーの取得 */
+        get: operations["Auth_GetMe"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/api/v{version}/projects": {
         parameters: {
             query?: never;
@@ -345,6 +362,21 @@ export interface components {
              */
             userId?: string;
         };
+        UserDto: {
+            /** Format: guid */
+            id?: string;
+            name?: string;
+            email?: string;
+            role?: string;
+            /** Format: guid */
+            createdBy?: string;
+            /** Format: date-time */
+            createdAt?: string;
+            /** Format: guid */
+            updatedBy?: string;
+            /** Format: date-time */
+            updatedAt?: string;
+        };
         ProjectDto: components["schemas"]["ProjectBaseDto"] & Record<string, never>;
         ProjectBaseDto: {
             /** Format: guid */
@@ -558,21 +590,6 @@ export interface components {
             /** @description コメント内容 */
             content?: string;
         };
-        UserDto: {
-            /** Format: guid */
-            id?: string;
-            name?: string;
-            email?: string;
-            role?: string;
-            /** Format: guid */
-            createdBy?: string;
-            /** Format: date-time */
-            createdAt?: string;
-            /** Format: guid */
-            updatedBy?: string;
-            /** Format: date-time */
-            updatedAt?: string;
-        };
         /** @description ユーザー登録リクエストDTO */
         RegisterUserRequest: {
             /** @description 名前 */
@@ -689,6 +706,35 @@ export interface operations {
                 };
                 content: {
                     "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ErrorResponse"];
+                };
+            };
+        };
+    };
+    Auth_GetMe: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                version: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UserDto"];
                 };
             };
             401: {
