@@ -5,8 +5,8 @@ import type {
   LoginResponse,
   RefreshResponse,
 } from "@/features/auth/types/api";
+import { admin } from "../data";
 import { getDefaultBaseUrl } from "../utils/apiConfig";
-import { MOCK_USER } from "../utils/mockData";
 import { createMockResponse, type MockConfig } from "../utils/mockHelper";
 
 const baseUrl = `${getDefaultBaseUrl()}/auth`;
@@ -51,9 +51,9 @@ export const loginHandler = http.post(
 
     const response = createMockResponse(
       body,
-      (b) => (b as LoginRequest).email === MOCK_USER.email,
+      (b) => (b as LoginRequest).email === admin.email,
       {
-        userId: MOCK_USER.id,
+        userId: admin.id,
       },
       {
         error: {
@@ -146,10 +146,10 @@ export const getCurrentUserHandler = http.get(
       accessToken,
       (t) => t === "mock-access-token",
       {
-        id: MOCK_USER.id,
-        name: MOCK_USER.name,
-        email: MOCK_USER.email,
-        role: MOCK_USER.role,
+        id: admin.id,
+        name: admin.name,
+        email: admin.email,
+        role: admin.role,
         createdBy: undefined,
         createdAt: undefined,
         updatedBy: undefined,
