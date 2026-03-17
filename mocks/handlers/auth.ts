@@ -141,7 +141,6 @@ export const getCurrentUserHandler = http.get(
   `${baseUrl}/me`,
   async ({ cookies }) => {
     const accessToken = cookies[ACCESS_COOKIE];
-    console.log("accessToken: ", accessToken);
 
     return createMockResponse(
       accessToken,
