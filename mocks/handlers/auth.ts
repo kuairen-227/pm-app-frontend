@@ -10,19 +10,22 @@ const REFRESH_COOKIE = "refreshToken" as const;
 
 const loginMockConfig: MockConfig<Schemas["LoginResponse"]> = {
   mode: "success",
-  status: 200,
+  successStatus: 200,
+  errorStatus: 401,
   customResponses: {},
 };
 
 const refreshMockConfig: MockConfig<Schemas["LoginResponse"]> = {
   mode: "success",
-  status: 200,
+  successStatus: 200,
+  errorStatus: 401,
   customResponses: {},
 };
 
 const logoutMockConfig: MockConfig<undefined> = {
   mode: "success",
-  status: 200,
+  successStatus: 200,
+  errorStatus: 401,
   customResponses: undefined,
 };
 

@@ -5,7 +5,8 @@ export type MockMode = "success" | "fail" | "custom";
 
 export type MockConfig<T> = {
   mode: MockMode;
-  status: number;
+  successStatus: number;
+  errorStatus: number;
   customResponses?: Partial<T>;
 };
 
@@ -25,12 +26,20 @@ export function createMockResponse<T extends JsonBodyType | undefined>(
   config: MockConfig<T>,
 ) {
   const isSuccess = config.mode === "success" && isValid(body);
-  const response =
-    config.mode === "custom"
-      ? { ...config.customResponses }
-      : isSuccess
-        ? successResponse
-        : errorResponse;
 
-  return HttpResponse.json(response, { status: config.status });
+  if (config.mode === "custom") {
+    return HttpResponse.json(config.customResponses, {
+      status: config.successStatus,
+    });
+  }
+
+  if (isSuccess) {
+    return HttpResponse.json(successResponse, {
+      status: config.successStatus,
+    });
+  }
+
+  return HttpResponse.json(errorResponse, {
+    status: config.errorStatus,
+  });
 }
