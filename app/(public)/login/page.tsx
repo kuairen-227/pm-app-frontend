@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { useLogin } from "@/features/auth/hooks/auth";
+import { useLogin } from "@/features/auth/hooks/useLogin";
 
 type LoginForm = {
   email: string;

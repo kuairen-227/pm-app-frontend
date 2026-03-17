@@ -1,0 +1,19 @@
+import { useMutation } from "@tanstack/react-query";
+import type { ApiError } from "@/shared/api/error";
+import type { LoginRequest, LoginResponse } from "../types/api";
+
+export function useLogin() {
+  return useMutation<LoginResponse, ApiError, LoginRequest>({
+    mutationFn: async (input: LoginRequest) => {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(input),
+      });
+
+      return response.json();
+    },
+  });
+}

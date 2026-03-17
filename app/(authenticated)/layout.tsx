@@ -1,5 +1,5 @@
 import { redirect } from "next/navigation";
-import { getCurrentUser } from "@/features/auth/api/auth";
+import { getCurrentUser } from "@/features/auth/api/getCurrentUser";
 
 export default async function AuthGuardLayout({
   children,

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { logout } from "@/features/auth/api/auth";
+import { logout } from "@/features/auth/api/logout";
 
 export async function POST() {
   const { response, data } = await logout();
