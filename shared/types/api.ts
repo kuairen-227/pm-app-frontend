@@ -6,6 +6,9 @@ export type ApiVersion = (typeof API_VERSION)[keyof typeof API_VERSION];
 export type HttpMethod = (typeof HTTP_METHOD)[keyof typeof HTTP_METHOD];
 
 // OpenAPI の型をラップ
+export type Schemas = components["schemas"];
+export type ErrorResponse = Schemas["ErrorResponse"];
+
 export type RequestBody<T extends keyof operations> =
   operations[T]["requestBody"] extends {
     content: { "application/json": infer R };
@@ -21,5 +24,3 @@ export type ResponseBody<
 }
   ? R
   : never;
-
-export type ErrorResponse = components["schemas"]["ErrorResponse"];
