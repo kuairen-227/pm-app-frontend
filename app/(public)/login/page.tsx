@@ -1,33 +1,26 @@
 "use client";
 
-import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useLogin } from "@/features/auth/hooks/auth";
 
-interface LoginForm {
+type LoginForm = {
   email: string;
   password: string;
-}
+};
 
 export default function LoginPage() {
-  const [form, setForm] = useState<LoginForm>({ email: "", password: "" });
-
-  const loginMutation = useMutation({
-    mutationFn: async (body: LoginForm) => {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(body),
-      });
-      if (!res.ok) throw new Error("Login failed");
-      return res.json();
-    },
+  const router = useRouter();
+  const [form, setForm] = useState<LoginForm>({
+    email: "",
+    password: "",
   });
+  const loginMutation = useLogin();
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await loginMutation.mutateAsync(form);
-    // ログイン後リダイレクト
-    window.location.href = "/";
+    router.push("/");
   };
 
   return (
@@ -39,7 +32,6 @@ export default function LoginPage() {
         <h1 className="text-xl font-semibold text-center">Login</h1>
 
         <input
-          name="email"
           type="email"
           placeholder="Email"
           value={form.email}
@@ -47,8 +39,8 @@ export default function LoginPage() {
           required
           className="w-full rounded-md border px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-blue-500"
         />
+
         <input
-          name="password"
           type="password"
           placeholder="Password"
           value={form.password}
