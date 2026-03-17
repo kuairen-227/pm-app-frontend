@@ -1,21 +1,26 @@
 import { http } from "msw";
-import type { Schemas } from "@/shared/types/api";
+import type {
+  GetCurrentUserResponse,
+  LoginRequest,
+  LoginResponse,
+  RefreshResponse,
+} from "@/features/auth/types/api";
 import { getDefaultBaseUrl } from "../utils/apiConfig";
 import { MOCK_USER } from "../utils/mockData";
 import { createMockResponse, type MockConfig } from "../utils/mockHelper";
 
 const baseUrl = `${getDefaultBaseUrl()}/auth`;
-const ACCESS_COOKIE = "accessToken" as const;
-const REFRESH_COOKIE = "refreshToken" as const;
+const ACCESS_COOKIE = "access_token" as const;
+const REFRESH_COOKIE = "refresh_token" as const;
 
-const loginMockConfig: MockConfig<Schemas["LoginResponse"]> = {
+const loginMockConfig: MockConfig<LoginResponse> = {
   mode: "success",
   successStatus: 200,
   errorStatus: 401,
   customResponses: {},
 };
 
-const refreshMockConfig: MockConfig<Schemas["LoginResponse"]> = {
+const refreshMockConfig: MockConfig<RefreshResponse> = {
   mode: "success",
   successStatus: 200,
   errorStatus: 401,
@@ -29,17 +34,24 @@ const logoutMockConfig: MockConfig<undefined> = {
   customResponses: undefined,
 };
 
+const getCurrentUserMockConfig: MockConfig<GetCurrentUserResponse> = {
+  mode: "success",
+  successStatus: 200,
+  errorStatus: 401,
+  customResponses: {},
+};
+
 /**
  * ログイン API
  */
 export const loginHandler = http.post(
   `${baseUrl}/login`,
   async ({ request }) => {
-    const body = (await request.json()) as Schemas["LoginRequest"];
+    const body = (await request.json()) as LoginRequest;
 
     const response = createMockResponse(
       body,
-      (b) => (b as Schemas["LoginRequest"]).email === MOCK_USER.email,
+      (b) => (b as LoginRequest).email === MOCK_USER.email,
       {
         userId: MOCK_USER.id,
       },
@@ -74,7 +86,7 @@ export const loginHandler = http.post(
 export const refreshHandler = http.post(
   `${baseUrl}/refresh`,
   async ({ cookies }) => {
-    const refreshToken = cookies.refresh_token;
+    const refreshToken = cookies[REFRESH_COOKIE];
 
     return createMockResponse(
       refreshToken,
@@ -121,3 +133,37 @@ export const logoutHandler = http.post(`${baseUrl}/logout`, async () => {
 
   return response;
 });
+
+/**
+ * ログインユーザー取得 API
+ */
+export const getCurrentUserHandler = http.get(
+  `${baseUrl}/me`,
+  async ({ cookies }) => {
+    const accessToken = cookies[ACCESS_COOKIE];
+    console.log("accessToken: ", accessToken);
+
+    return createMockResponse(
+      accessToken,
+      (t) => t === "mock-access-token",
+      {
+        id: MOCK_USER.id,
+        name: MOCK_USER.name,
+        email: MOCK_USER.email,
+        role: MOCK_USER.role,
+        createdBy: undefined,
+        createdAt: undefined,
+        updatedBy: undefined,
+        updatedAt: undefined,
+      },
+      {
+        error: {
+          code: "AUTH.UNAUTHORIZED",
+          message: "認証されていません。",
+          traceId: `trace-mock-me-${Date.now()}`,
+        },
+      },
+      getCurrentUserMockConfig,
+    );
+  },
+);

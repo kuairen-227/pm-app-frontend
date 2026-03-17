@@ -46,3 +46,19 @@ export async function logout(): Promise<void> {
 
   checkApiError(response, error);
 }
+
+export async function getCurrentUser(): Promise<GetCurrentUserResponse | null> {
+  const { response, data, error } = await apiClient.GET(
+    "/api/v{version}/auth/me",
+    {
+      params: { path: { version: DEFAULT_API_VERSION } },
+    },
+  );
+
+  if (response.status === 401) return null;
+
+  checkApiError(response, error);
+  checkApiResponse(data);
+
+  return data;
+}
