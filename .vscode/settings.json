@@ -21,6 +21,7 @@
     // Folder
     "api",
     "design",
+    "mock",
     "package",
     "test",
     "workspace",
