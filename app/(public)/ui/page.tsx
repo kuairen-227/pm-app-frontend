@@ -3,7 +3,7 @@ import { PageHeader } from "@/components/layout/page-header";
 import { Loading } from "@/components/state/loading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ThemeToggle } from "../_components/theme-toggle";
+import { ThemeToggle } from "../../(authenticated)/_components/theme-toggle";
 
 export default function UIPage() {
   return (
