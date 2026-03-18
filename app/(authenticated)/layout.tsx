@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { getCurrentUser } from "@/features/auth/api/getCurrentUser";
+import { ThemeToggle } from "./_components/theme-toggle";
 
 export default async function AuthGuardLayout({
   children,
@@ -12,5 +13,10 @@ export default async function AuthGuardLayout({
     redirect("/login");
   }
 
-  return <>{children}</>;
+  return (
+    <>
+      <ThemeToggle />
+      {children}
+    </>
+  );
 }
