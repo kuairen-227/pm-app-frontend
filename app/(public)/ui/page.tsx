@@ -1,5 +1,8 @@
+"use client";
+
 import type React from "react";
 import { PageHeader } from "@/components/layout/page-header";
+import { ErrorMessage } from "@/components/state/error-message";
 import { Loading } from "@/components/state/loading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,11 +31,11 @@ export default function UIPage() {
         </SubSection>
 
         <SubSection title="Sizes">
-            <Button size="default">Default</Button>
-            <Button size="xs">XS</Button>
-            <Button size="sm">SM</Button>
-            <Button size="lg">LG</Button>
-            <Button size="icon">+</Button>
+          <Button size="default">Default</Button>
+          <Button size="xs">XS</Button>
+          <Button size="sm">SM</Button>
+          <Button size="lg">LG</Button>
+          <Button size="icon">+</Button>
         </SubSection>
       </Section>
 
@@ -44,6 +47,24 @@ export default function UIPage() {
       {/* Loading */}
       <Section title="Loading">
         <Loading />
+      </Section>
+
+      {/* ErrorMessage */}
+      <Section title="ErrorMessage">
+        <SubSection title="Variants">
+          <ErrorMessage
+            title="エラーが発生しました（inline）"
+            message="inlineモードのエラーメッセージ"
+            variant="inline"
+            onRetry={() => console.log("inline")}
+          />
+          <ErrorMessage
+            title="エラーが発生しました（page）"
+            message="pageモードのエラーメッセージ"
+            variant="page"
+            onRetry={() => console.log("page")}
+          />
+        </SubSection>
       </Section>
     </main>
   );
