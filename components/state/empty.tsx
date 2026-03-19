@@ -1,9 +1,9 @@
 import { FolderOpen } from "lucide-react";
 import {
-  Empty as EmptyBase,
   EmptyContent,
   EmptyDescription,
   EmptyHeader,
+  Empty as EmptyPrimitive,
   EmptyTitle,
 } from "../ui/empty";
 
@@ -21,7 +21,7 @@ export function Empty({
   action,
 }: EmptyProps) {
   return (
-    <EmptyBase className="py-10">
+    <EmptyPrimitive className="py-10">
       <EmptyHeader className="flex flex-col items-center gap-3 text-center">
         {/* アイコン */}
         <div className="text-muted-foreground">
@@ -42,6 +42,6 @@ export function Empty({
           {action}
         </EmptyContent>
       )}
-    </EmptyBase>
+    </EmptyPrimitive>
   );
 }
