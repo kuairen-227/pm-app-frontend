@@ -1,4 +1,5 @@
 import { ThemeToggle } from "@/app/(authenticated)/_components/theme-toggle";
+import { Sidebar } from "./sidebar";
 
 type AppShellProps = {
   children: React.ReactNode;
@@ -8,7 +9,7 @@ export function AppShell({ children }: AppShellProps) {
   return (
     <div className="flex h-screen">
       {/* サイドバー */}
-      <aside className="w-64 border-r">Sidebar</aside>
+      <Sidebar />
 
       {/* メインエリア */}
       <div className="flex flex-1 flex-col">
