@@ -2,6 +2,7 @@
 
 import type React from "react";
 import { PageHeader } from "@/components/layout/page-header";
+import { Empty } from "@/components/state/empty";
 import { ErrorMessage } from "@/components/state/error-message";
 import { Loading } from "@/components/state/loading";
 import { Button } from "@/components/ui/button";
@@ -47,6 +48,19 @@ export default function UIPage() {
       {/* Loading */}
       <Section title="Loading">
         <Loading />
+      </Section>
+
+      {/* Empty */}
+      <Section title="Empty">
+        <Empty
+          description="Emptyコンポーネントの説明"
+          action={
+            <>
+              <p>ここに詳細やアクションを促す内容を要素として配置</p>
+              <Button variant="link">プロジェクト一覧へ戻る</Button>
+            </>
+          }
+        />
       </Section>
 
       {/* ErrorMessage */}
