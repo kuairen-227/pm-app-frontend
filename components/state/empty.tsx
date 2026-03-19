@@ -1,3 +1,4 @@
+import { FolderOpen } from "lucide-react";
 import {
   Empty as EmptyBase,
   EmptyContent,
@@ -7,29 +8,40 @@ import {
 } from "../ui/empty";
 
 type EmptyProps = {
+  icon?: React.ReactNode;
   title?: string;
   description?: string;
   action?: React.ReactNode;
 };
 
 export function Empty({
+  icon,
   title = "データがありません",
   description,
   action,
 }: EmptyProps) {
   return (
-    <EmptyBase>
-      <EmptyHeader>
-        {/* タイトル */}
-        <EmptyTitle>{title}</EmptyTitle>
-        {/* 説明 */}
-        {description && <EmptyDescription>{description}</EmptyDescription>}
+    <EmptyBase className="py-10">
+      <EmptyHeader className="flex flex-col items-center gap-3 text-center">
+        {/* アイコン */}
+        <div className="text-muted-foreground">
+          {icon ?? <FolderOpen className="h-10 w-10" />}
+        </div>
+
+        <div className="space-y-1">
+          {/* タイトル */}
+          <EmptyTitle>{title}</EmptyTitle>
+          {/* 説明 */}
+          {description && <EmptyDescription>{description}</EmptyDescription>}
+        </div>
       </EmptyHeader>
 
-      <EmptyContent>
-        {/* アクション */}
-        {action}
-      </EmptyContent>
+      {/* CTA */}
+      {action && (
+        <EmptyContent className="mt-4 flex justify-center">
+          {action}
+        </EmptyContent>
+      )}
     </EmptyBase>
   );
 }
