@@ -16,10 +16,7 @@ export default function UIPage() {
 
       {/* Button */}
       <Section title="Button">
-        <div className="space-y-3">
-          <h3 className="text-sm font-medium text-muted-foreground">
-            Variants
-          </h3>
+        <SubSection title="Variants">
           <div className="flex flex-wrap gap-3">
             <Button>Default</Button>
             <Button variant="outline">Outline</Button>
@@ -28,18 +25,15 @@ export default function UIPage() {
             <Button variant="destructive">Destructive</Button>
             <Button variant="link">Link</Button>
           </div>
-        </div>
+        </SubSection>
 
-        <div className="space-y-3">
-          <h3 className="text-sm font-medium text-muted-foreground">Sizes</h3>
-          <div className="flex flex-wrap items-center gap-3">
+        <SubSection title="Sizes">
             <Button size="default">Default</Button>
             <Button size="xs">XS</Button>
             <Button size="sm">SM</Button>
             <Button size="lg">LG</Button>
             <Button size="icon">+</Button>
-          </div>
-        </div>
+        </SubSection>
       </Section>
 
       {/* Input */}
@@ -67,5 +61,22 @@ function Section({
       <h2 className="text-xl font-medium">{title}</h2>
       <div className="rounded-lg border bg-card p-6 space-y-4">{children}</div>
     </section>
+  );
+}
+
+function SubSection({
+  title,
+  children,
+}: {
+  title: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <>
+      <div className="space-y-3">
+        <h3 className="text-sm font-medium text-muted-foreground">{title}</h3>
+      </div>
+      {children}
+    </>
   );
 }
