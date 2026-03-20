@@ -11,11 +11,13 @@ export function UserMenu() {
   return (
     <DropdownMenu>
       {/* トリガー */}
-      <DropdownMenuTrigger>
-        <Button variant="ghost" size="icon">
-          <User className="h-4 w-4" />
-        </Button>
-      </DropdownMenuTrigger>
+      <DropdownMenuTrigger
+        render={
+          <Button variant="ghost" size="icon">
+            <User className="h-4 w-4" />
+          </Button>
+        }
+      />
 
       {/* コンテンツ */}
       <DropdownMenuContent align="end">
