@@ -1,3 +1,4 @@
+import { SidebarProvider } from "../ui/sidebar";
 import { GlobalHeader } from "./global-header";
 import { Sidebar } from "./sidebar";
 
@@ -7,7 +8,7 @@ type AppShellProps = {
 
 export function AppShell({ children }: AppShellProps) {
   return (
-    <div className="flex h-screen">
+    <SidebarProvider>
       {/* サイドバー */}
       <Sidebar />
 
@@ -18,6 +19,6 @@ export function AppShell({ children }: AppShellProps) {
         {/* コンテンツ */}
         <main className="flex-1 overflow-auto">{children}</main>
       </div>
-    </div>
+    </SidebarProvider>
   );
 }
