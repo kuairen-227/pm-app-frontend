@@ -7,7 +7,6 @@ import { ErrorMessage } from "@/components/state/error-message";
 import { Loading } from "@/components/state/loading";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { ThemeToggle } from "../../(authenticated)/_components/theme-toggle";
 
 export default function UIPage() {
   return (
@@ -15,7 +14,7 @@ export default function UIPage() {
       <PageHeader
         title="UI Playground"
         description="UIコンポーネントのストーリーブック"
-        actions={<ThemeToggle />}
+        actions={<Button>ボタン</Button>}
       />
 
       {/* Button */}

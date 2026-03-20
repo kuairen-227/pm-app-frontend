@@ -1,4 +1,4 @@
-import { ThemeToggle } from "@/app/(authenticated)/_components/theme-toggle";
+import { GlobalHeader } from "./global-header";
 import { Sidebar } from "./sidebar";
 
 type AppShellProps = {
@@ -14,10 +14,7 @@ export function AppShell({ children }: AppShellProps) {
       {/* メインエリア */}
       <div className="flex flex-1 flex-col">
         {/* ヘッダー */}
-        <header className="h-14 border-b px-6 flex items-center">
-          Header
-          <ThemeToggle />
-        </header>
+        <GlobalHeader />
         {/* コンテンツ */}
         <main className="flex-1 overflow-auto">{children}</main>
       </div>
