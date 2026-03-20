@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { PageHeader } from "@/components/layout/page-header";
+import { PageHeader } from "@/components/layout/page-layout/page-header";
 import { Empty } from "@/components/state/empty";
 import { ErrorMessage } from "@/components/state/error-message";
 import { Loading } from "@/components/state/loading";

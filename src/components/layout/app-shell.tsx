@@ -17,7 +17,7 @@ export function AppShell({ children }: AppShellProps) {
         {/* ヘッダー */}
         <GlobalHeader />
         {/* コンテンツ */}
-        <main className="flex-1 overflow-auto">{children}</main>
+        <main className="flex-1 overflow-hidden">{children}</main>
       </div>
     </SidebarProvider>
   );
