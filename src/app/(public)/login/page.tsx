@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useLogin } from "@/features/auth/hooks/useLogin";
+import { routes } from "@/shared/config/route";
 
 type LoginForm = {
   email: string;
@@ -20,7 +21,7 @@ export default function LoginPage() {
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await loginMutation.mutateAsync(form);
-    router.push("/");
+    router.push(routes.home());
   };
 
   return (
