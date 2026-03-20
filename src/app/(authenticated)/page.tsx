@@ -6,6 +6,7 @@ import {
 import { PageHeader } from "@/components/layout/page-layout/page-header";
 import { Button } from "@/components/ui/button";
 import { listProjects } from "@/features/project/api/listProjects";
+import { ProjectGrid } from "@/features/project/components/project-grid";
 
 export default async function Home() {
   const projects = await listProjects();
@@ -14,16 +15,12 @@ export default async function Home() {
     <PageLayout>
       <PageHeader
         title="プロジェクト"
-        description="参加しているプロジェクトの一覧"
-        actions={<Button>プロジェクト作成</Button>}
+        description="参加しているプロジェクト"
+        actions={<Button>新規作成</Button>}
       />
       <PageBody>
         <PageContainer>
-          <ul>
-            {projects.map((p) => (
-              <li key={p.id}>{p.name}</li>
-            ))}
-          </ul>
+          <ProjectGrid projects={projects} />
         </PageContainer>
       </PageBody>
     </PageLayout>
