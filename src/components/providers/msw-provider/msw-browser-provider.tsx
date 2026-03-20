@@ -5,7 +5,7 @@ import { env } from "@/shared/config/env";
 
 const mockingEnabledPromise =
   typeof window !== "undefined" && env.NEXT_PUBLIC_MOCK_ENABLED
-    ? import("@/mocks/browser").then(async ({ worker }) => {
+    ? import("@mocks/browser").then(async ({ worker }) => {
         await worker.start({
           onUnhandledRequest(request, print) {
             if (request.url.includes("_next")) {
