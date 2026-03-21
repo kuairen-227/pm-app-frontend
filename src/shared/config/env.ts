@@ -1,7 +1,7 @@
 // biome-ignore-all lint/style/noProcessEnv: このファイル以外で process.env の利用を禁止
 
 import { createEnv } from "@t3-oss/env-nextjs";
-import z from "zod";
+import { z } from "zod";
 
 export const env = createEnv({
   server: {},
