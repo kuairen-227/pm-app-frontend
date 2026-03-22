@@ -33,15 +33,15 @@ async function refreshAccessToken() {
 
 apiClient.use({
   async onRequest({ request }) {
+    console.debug("[Request]", request.method, request.url, {
+      body: request.body,
+    });
     request.headers.set("Cookie", await getCookieHeader());
     return request;
   },
 
   async onResponse({ response, request }) {
-    console.log(response.url, {
-      request: {
-        body: request.body,
-      },
+    console.debug("[Response]", request.method, request.url, {
       response: {
         status: response.status,
         message: response.statusText,
