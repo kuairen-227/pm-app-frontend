@@ -5,6 +5,7 @@ export const routes = {
   },
   project: {
     detail: (projectId: string) => `/projects/${projectId}`,
+    new: () => "/projects/new",
   },
   ticket: {
     list: (projectId: string) => `/projects/${projectId}/tickets`,

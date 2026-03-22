@@ -1,3 +1,4 @@
+import Link from "next/link";
 import {
   PageBody,
   PageContainer,
@@ -8,6 +9,7 @@ import { Empty } from "@/components/state/empty";
 import { Button } from "@/components/ui/button";
 import { listProjects } from "@/features/project/api/listProjects";
 import { ProjectGrid } from "@/features/project/components/project-grid";
+import { routes } from "@/shared/config/route";
 
 export default async function Home() {
   const projects = await listProjects();
@@ -20,7 +22,11 @@ export default async function Home() {
           <PageHeader
             title="プロジェクト"
             description="参加しているプロジェクト"
-            actions={<Button>新規作成</Button>}
+            actions={
+              <Button>
+                <Link href={routes.project.new()}>新規作成</Link>
+              </Button>
+            }
           />
 
           {/* プロジェクト一覧 */}
