@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import type { ApiError } from "next/dist/server/api-utils";
+import { HTTP_METHOD } from "@/shared/consts/api";
 import { projectQueryKeys } from "../queries/projectQueryKeys";
 import type { ProjectFormData } from "../types/form";
 import { toLaunchProjectRequest } from "../types/mapper";
@@ -15,7 +16,7 @@ export function useLaunchProject() {
     mutationFn: async (input) => {
       const request = toLaunchProjectRequest(input);
       const response = await fetch("/api/projects", {
-        method: "POST",
+        method: HTTP_METHOD.POST,
         headers: {
           "Content-Type": "application/json",
         },
