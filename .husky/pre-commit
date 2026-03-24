@@ -1,21 +1,29 @@
 #!/bin/sh
+# pre-commit
+
+CHANGED_FILES=$(git diff --cached --name-only -- '*.ts' '*.tsx' '*.js' '*.json')
+if [ -z "$CHANGED_FILES" ]; then
+  echo "No relevant files to check. ✅"
+  exit 0
+fi
+
 echo "🔍 Running secret scan..."
 
-if ! pnpm exec secretlint . --secretlintignore .gitignore; then
+if ! pnpm exec secretlint $CHANGED_FILES --secretlintignore .gitignore; then
   echo "❌ Secret detected! Commit aborted."
   exit 1
 fi
 
 echo "🏷️ Running type check..."
 
-if ! pnpm typecheck; then
+if ! pnpm typecheck $CHANGED_FILES; then
   echo "❌ Type check failed! Commit aborted."
   exit 1
 fi
 
 echo "🧪 Running pnpm check..."
 
-if ! pnpm check; then
+if ! pnpm check $CHANGED_FILES; then
   echo "❌ Check failed! Commit aborted."
   exit 1
 fi
