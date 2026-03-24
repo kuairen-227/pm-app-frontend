@@ -16,6 +16,7 @@ fi
 
 echo "🏷️ Running type check..."
 
+# NOTE: プロジェクト全体の型依存はCIで確認とし、ここでは差分のみ
 if ! pnpm typecheck $CHANGED_FILES; then
   echo "❌ Type check failed! Commit aborted."
   exit 1
