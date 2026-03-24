@@ -7,6 +7,7 @@ export type GetProjectRequest = RequestBody<"Projects_GetById">;
 export type GetProjectResponse = ResponseBody<"Projects_GetById", 200>;
 
 export type LaunchProjectRequest = RequestBody<"Projects_Launch">;
+export type LaunchProjectResponse = ResponseBody<"Projects_Launch", 201>;
 
 export type UpdateProjectRequest = RequestBody<"Projects_Update">;
 export type UpdateProjectResponse = ResponseBody<"Projects_Update", 204>;
