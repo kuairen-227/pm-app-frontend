@@ -11,7 +11,7 @@ import { ProjectProvider } from "@/features/project/context/project-context";
 import type { Project } from "@/features/project/types/project";
 
 type ProjectLayoutProps = {
-  params: { projectId: Project["id"] };
+  params: Promise<{ projectId: Project["id"] }>;
   children: React.ReactNode;
 };
 
