@@ -1,6 +1,7 @@
 import { queryOptions } from "@tanstack/react-query";
 import { getProject } from "../api/getProject";
 import { listProjects } from "../api/listProjects";
+import type { Project } from "../types/project";
 import { projectQueryKeys } from "./projectQueryKeys";
 
 export const projectQueries = {
@@ -9,7 +10,7 @@ export const projectQueries = {
       queryKey: projectQueryKeys.list(),
       queryFn: listProjects,
     }),
-  detail: (projectId: string) =>
+  detail: (projectId: Project["id"]) =>
     queryOptions({
       queryKey: projectQueryKeys.detail(projectId),
       queryFn: () => getProject(projectId),

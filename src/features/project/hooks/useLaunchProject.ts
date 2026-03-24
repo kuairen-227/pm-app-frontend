@@ -4,9 +4,10 @@ import { HTTP_METHOD } from "@/shared/consts/api";
 import { projectQueryKeys } from "../queries/projectQueryKeys";
 import type { ProjectFormData } from "../types/form";
 import { toLaunchProjectRequest } from "../types/mapper";
+import type { Project } from "../types/project";
 
 type LaunchProjectResponse = {
-  projectId: string;
+  projectId: Project["id"];
 };
 
 export function useLaunchProject() {

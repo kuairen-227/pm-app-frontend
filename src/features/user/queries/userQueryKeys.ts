@@ -1,3 +1,5 @@
+import type { User } from "../types/user";
+
 export const userQueryKeys = {
   all: ["users"] as const,
 
@@ -6,5 +8,5 @@ export const userQueryKeys = {
     [...userQueryKeys.lists(), filters] as const,
 
   details: () => [...userQueryKeys.all, "detail"] as const,
-  detail: (id: string) => [...userQueryKeys.details(), id] as const,
+  detail: (userId: User["id"]) => [...userQueryKeys.details(), userId] as const,
 };

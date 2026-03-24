@@ -141,20 +141,12 @@ export const getCurrentUserHandler = http.get(
   `${baseUrl}/me`,
   async ({ cookies }) => {
     const accessToken = cookies[ACCESS_COOKIE];
+    const { password: _password, ...adminWithoutPassword } = admin;
 
     return createMockResponse(
       accessToken,
       (t) => t === "mock-access-token",
-      {
-        id: admin.id,
-        name: admin.name,
-        email: admin.email,
-        role: admin.role,
-        createdBy: undefined,
-        createdAt: undefined,
-        updatedBy: undefined,
-        updatedAt: undefined,
-      },
+      adminWithoutPassword,
       {
         error: {
           code: "AUTH.UNAUTHORIZED",
