@@ -347,12 +347,11 @@ export interface components {
             /** @description トレースID */
             traceId?: string;
         };
-        /** @description ログインリクエストDTO */
         LoginRequest: {
-            /** @description メールアドレス */
             email?: string;
-            /** @description パスワード */
             password?: string;
+            twoFactorCode?: string | null;
+            twoFactorRecoveryCode?: string | null;
         };
         /** @description リフレッシュレスポンスDTO */
         RefreshResponse: {
@@ -362,53 +361,90 @@ export interface components {
              */
             userId?: string;
         };
-        UserDto: {
-            /** Format: guid */
-            id?: string;
-            name?: string;
-            email?: string;
-            role?: string;
-            /** Format: guid */
-            createdBy?: string;
-            /** Format: date-time */
-            createdAt?: string;
-            /** Format: guid */
-            updatedBy?: string;
-            /** Format: date-time */
-            updatedAt?: string;
+        MeResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description ユーザーID
+             */
+            id: string;
+            /** @description ユーザー名 */
+            name: string;
+            /** @description Eメール */
+            email: string;
+            /** @description システムロール */
+            role: string;
         };
-        ProjectDto: components["schemas"]["ProjectBaseDto"] & Record<string, never>;
-        ProjectBaseDto: {
-            /** Format: guid */
-            id?: string;
-            name?: string;
+        /** @description 監査情報レスポンスDTO */
+        AuditInfoResponse: {
+            /**
+             * Format: guid
+             * @description 作成者
+             */
+            createdBy: string;
+            /**
+             * Format: date-time
+             * @description 作成日時
+             */
+            createdAt: string;
+            /**
+             * Format: guid
+             * @description 更新者
+             */
+            updatedBy: string;
+            /**
+             * Format: date-time
+             * @description 更新日時
+             */
+            updatedAt: string;
+        };
+        ProjectResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description プロジェクトID
+             */
+            id: string;
+            /** @description プロジェクト名 */
+            name: string;
+            /** @description プロジェクト説明 */
             description?: string | null;
-            /** Format: guid */
-            createdBy?: string;
-            /** Format: date-time */
-            createdAt?: string;
-            /** Format: guid */
-            updatedBy?: string;
-            /** Format: date-time */
-            updatedAt?: string;
         };
-        ProjectDetailDto: components["schemas"]["ProjectBaseDto"] & {
-            members?: components["schemas"]["ProjectMemberDto"][];
+        ProjectDetailResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description プロジェクトID
+             */
+            id: string;
+            /** @description プロジェクト名 */
+            name: string;
+            /** @description プロジェクト説明 */
+            description?: string | null;
+            /** @description プロジェクトメンバー */
+            members: components["schemas"]["ProjectMemberResponse"][];
         };
-        ProjectMemberDto: {
-            /** Format: guid */
-            userId?: string;
-            role?: string;
+        /** @description プロジェクトメンバーレスポンスDTO */
+        ProjectMemberResponse: {
+            /**
+             * Format: guid
+             * @description ユーザーID
+             */
+            userId: string;
+            /** @description プロジェクトロール */
+            role: string;
         };
-        LaunchProjectRequest: components["schemas"]["ProjectBaseDto2"] & Record<string, never>;
-        /** @description Project ベースDTO */
-        ProjectBaseDto2: {
+        /** @description プロジェクト作成リクエストDTO */
+        LaunchProjectRequest: {
             /** @description プロジェクト名 */
             name: string;
             /** @description 説明文 */
             description?: string | null;
         };
-        UpdateProjectRequest: components["schemas"]["ProjectBaseDto2"] & Record<string, never>;
+        /** @description プロジェクト編集リクエストDTO */
+        UpdateProjectRequest: {
+            /** @description プロジェクト名 */
+            name: string;
+            /** @description 説明文 */
+            description?: string | null;
+        };
         /** @description プロジェクトメンバー追加リクエストDTO */
         InviteMemberRequest: {
             /**
@@ -424,61 +460,130 @@ export interface components {
             /** @description プロジェクトロール */
             projectRole: string;
         };
-        PagedResultDtoOfTicketDto: {
-            items?: components["schemas"]["TicketDto"][];
-            /** Format: int32 */
-            totalCount?: number;
-            /** Format: int32 */
-            pageNumber?: number;
-            /** Format: int32 */
-            pageSize?: number;
+        /** @description ページネーションレスポンスDTO */
+        PaginatedResponseOfTicketResponse: {
+            /** @description ページネーションアイテム */
+            items: components["schemas"]["TicketResponse"][];
+            /**
+             * Format: int32
+             * @description トータルカウント
+             */
+            totalCount: number;
+            /**
+             * Format: int32
+             * @description ページ番号
+             */
+            pageNumber: number;
+            /**
+             * Format: int32
+             * @description ページサイズ
+             */
+            pageSize: number;
+            /**
+             * Format: int32
+             * @description トータルページ数
+             */
+            totalPages: number;
         };
-        TicketDto: components["schemas"]["TicketBaseDto"] & Record<string, never>;
-        TicketBaseDto: {
-            /** Format: guid */
-            id?: string;
-            title?: string;
-            /** Format: guid */
+        TicketResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description チケットID
+             */
+            id: string;
+            /** @description チケットタイトル */
+            title: string;
+            /**
+             * Format: guid
+             * @description 担当者ID
+             */
             assigneeId?: string | null;
-            /** Format: date */
+            /**
+             * Format: date
+             * @description 開始日
+             */
             startDate?: string | null;
-            /** Format: date */
+            /**
+             * Format: date
+             * @description 終了日
+             */
             endDate?: string | null;
-            status?: string;
-            /** Format: guid */
-            createdBy?: string;
-            /** Format: date-time */
-            createdAt?: string;
-            /** Format: guid */
-            updatedBy?: string;
-            /** Format: date-time */
-            updatedAt?: string;
+            /** @description ステータス */
+            status: string;
         };
-        TicketDetailDto: components["schemas"]["TicketBaseDto"] & {
-            completionCriteria?: components["schemas"]["TicketCompletionCriterionDto"][];
-            comments?: components["schemas"]["TicketCommentDto"][];
-            histories?: components["schemas"]["TicketHistoryDto"][];
+        TicketDetailResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description チケットID
+             */
+            id: string;
+            /** @description チケットタイトル */
+            title: string;
+            /**
+             * Format: guid
+             * @description 担当者ID
+             */
+            assigneeId?: string | null;
+            /**
+             * Format: date
+             * @description 開始日
+             */
+            startDate?: string | null;
+            /**
+             * Format: date
+             * @description 終了日
+             */
+            endDate?: string | null;
+            /** @description ステータス */
+            status: string;
+            /** @description チケット完了条件 */
+            completionCriteria: components["schemas"]["TicketCompletionCriterionResponse"][];
+            /** @description チケットコメント */
+            comments: components["schemas"]["TicketCommentResponse"][];
+            /** @description チケット履歴 */
+            histories: components["schemas"]["TicketHistoryResponse"][];
         };
-        TicketCompletionCriterionDto: {
-            criterion?: string;
-            isCompleted?: boolean;
+        /** @description チケット完了条件レスポンスDTO */
+        TicketCompletionCriterionResponse: {
+            /** @description 完了条件 */
+            criterion: string;
+            /** @description 完了状況 */
+            isCompleted: boolean;
         };
-        TicketCommentDto: {
-            /** Format: guid */
-            authorId?: string;
-            content?: string;
+        /** @description チケットコメントレスポンスDTO */
+        TicketCommentResponse: {
+            /**
+             * Format: guid
+             * @description 投稿者ID
+             */
+            authorId: string;
+            /** @description コメント内容 */
+            content: string;
         };
-        TicketHistoryDto: {
-            /** Format: guid */
-            actorId?: string;
-            /** Format: date-time */
-            occurredAt?: string;
-            action?: string;
-            changes?: components["schemas"]["TicketHistoryChangeDto"][];
+        /** @description チケット履歴レスポンスDTO */
+        TicketHistoryResponse: {
+            /**
+             * Format: guid
+             * @description 実行者ID
+             */
+            actorId: string;
+            /**
+             * Format: date-time
+             * @description 発生日時
+             */
+            occurredAt: string;
+            /** @description 実行内容 */
+            action: string;
+            /** @description チケット履歴変更内容 */
+            changes: components["schemas"]["TicketHistoryChangeResponse"][];
         };
-        TicketHistoryChangeDto: {
-            field?: string;
+        /** @description チケット履歴変更内容レスポンスDTO */
+        TicketHistoryChangeResponse: {
+            /** @description 変更項目 */
+            field: string;
+            /** @description 変更前 */
             before?: string | null;
+            /** @description 変更後 */
             after?: string | null;
         };
         /** @description チケット作成リクエストDTO */
@@ -589,6 +694,19 @@ export interface components {
         EditTicketCommentRequest: {
             /** @description コメント内容 */
             content?: string;
+        };
+        UserResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description ユーザーID
+             */
+            id: string;
+            /** @description ユーザー名 */
+            name: string;
+            /** @description Eメール */
+            email: string;
+            /** @description システムロール */
+            role: string;
         };
         /** @description ユーザー登録リクエストDTO */
         RegisterUserRequest: {
@@ -734,7 +852,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["UserDto"];
+                    "application/json": components["schemas"]["MeResponse"];
                 };
             };
             401: {
@@ -763,7 +881,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ProjectDto"][];
+                    "application/json": components["schemas"]["ProjectResponse"][];
                 };
             };
             401: {
@@ -840,7 +958,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["ProjectDetailDto"];
+                    "application/json": components["schemas"]["ProjectDetailResponse"];
                 };
             };
             401: {
@@ -1136,7 +1254,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["PagedResultDtoOfTicketDto"];
+                    "application/json": components["schemas"]["PaginatedResponseOfTicketResponse"];
                 };
             };
             401: {
@@ -1223,7 +1341,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["TicketDetailDto"];
+                    "application/json": components["schemas"]["TicketDetailResponse"];
                 };
             };
             401: {
@@ -1800,7 +1918,7 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["UserDto"][];
+                    "application/json": components["schemas"]["UserResponse"][];
                 };
             };
             401: {
