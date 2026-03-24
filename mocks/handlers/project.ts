@@ -1,7 +1,9 @@
 import { HttpResponse, http } from "msw";
 import type {
+  DeleteProjectResponse,
   GetProjectResponse,
   ListProjectsResponse,
+  UpdateProjectResponse,
 } from "@/features/project/types/api";
 import { mockProjects } from "../data/projects";
 import { getDefaultBaseUrl } from "../utils/apiConfig";
@@ -23,6 +25,18 @@ const getProjectConfig: MockConfig<GetProjectResponse> = {
   customResponses: undefined,
 };
 
+const updateProjectConfig: MockConfig<UpdateProjectResponse> = {
+  mode: "success",
+  successStatus: 204,
+  errorStatus: 400,
+};
+
+const deleteProjectConfig: MockConfig<DeleteProjectResponse> = {
+  mode: "success",
+  successStatus: 204,
+  errorStatus: 404,
+};
+
 /**
  * プロジェクト一覧取得 API
  */
@@ -40,10 +54,10 @@ export const listProjectsHandler = http.get(baseUrl, async () => {
  * プロジェクト単体取得 API
  */
 export const getProjectHandler = http.get(
-  `${baseUrl}/:id`,
+  `${baseUrl}/:projectId`,
   async ({ params }) => {
-    const { id } = params;
-    const project = mockProjects.find((p) => p.id === id);
+    const { projectId } = params;
+    const project = mockProjects.find((p) => p.id === projectId);
 
     return createMockResponse(
       undefined,
@@ -68,3 +82,38 @@ export const launchProjectHandler = http.post(baseUrl, async () => {
     },
   });
 });
+
+/**
+ * プロジェクト編集 API
+ */
+export const UpdateProjectHandler = http.patch(
+  `${baseUrl}/:projectId`,
+  async () => {
+    return createMockResponse(
+      undefined,
+      () => true,
+      undefined,
+      {},
+      updateProjectConfig,
+    );
+  },
+);
+
+/**
+ * プロジェクト削除 API
+ */
+export const DeleteProjectHandler = http.delete(
+  `${baseUrl}/:projectId`,
+  async ({ params }) => {
+    const { projectId } = params;
+    const project = mockProjects.find((p) => p.id === projectId);
+
+    return createMockResponse(
+      undefined,
+      () => !!project,
+      undefined,
+      {},
+      deleteProjectConfig,
+    );
+  },
+);
