@@ -9,3 +9,12 @@ export function toLaunchProjectRequest(
     description: input.description ?? null,
   } as LaunchProjectRequest;
 }
+
+export function toUpdateProjectRequest(
+  input: ProjectFormData,
+): LaunchProjectRequest {
+  return {
+    name: input.name,
+    description: input.description ?? null,
+  } as LaunchProjectRequest;
+}

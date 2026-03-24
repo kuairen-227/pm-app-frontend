@@ -15,19 +15,26 @@ import {
 import { Input } from "@/components/ui/input";
 import { routes } from "@/shared/config/route";
 import { useLaunchProject } from "../hooks/useLaunchProject";
+import { useUpdateProject } from "../hooks/useUpdateProject";
 import { projectFormSchema } from "../schema/form";
 import type { ProjectFormData } from "../types/form";
+import type { Project } from "../types/project";
 
-export function ProjectForm() {
+type ProjectFormProps = {
+  project?: Project;
+};
+
+export function ProjectForm({ project }: ProjectFormProps) {
   const router = useRouter();
   const launchProjectMutation = useLaunchProject();
+  const updateProjectMutation = useUpdateProject(project?.id ?? "");
   const [error, setError] = useState<string | null>(null);
 
   const form = useForm<ProjectFormData>({
     resolver: zodResolver(projectFormSchema),
     defaultValues: {
-      name: "",
-      description: "",
+      name: project?.name ?? "",
+      description: project?.description ?? "",
     },
   });
 
@@ -35,13 +42,19 @@ export function ProjectForm() {
     setError(null);
 
     try {
-      const response = await launchProjectMutation.mutateAsync(data);
-      router.push(routes.project.detail(response.projectId));
+      if (project) {
+        await updateProjectMutation.mutateAsync(data);
+        router.refresh(); // ProjectProvider の Context 更新
+        router.push(routes.project.detail(project.id));
+      } else {
+        const response = await launchProjectMutation.mutateAsync(data);
+        router.push(routes.project.detail(response.projectId));
+      }
     } catch (err: unknown) {
       if (err instanceof Error) {
         setError(err.message);
       } else {
-        setError("プロジェクト作成に失敗しました");
+        setError("保存に失敗しました");
       }
     }
   };
@@ -78,7 +91,7 @@ export function ProjectForm() {
         className="w-full"
         disabled={launchProjectMutation.isPending}
       >
-        {launchProjectMutation.isPending ? "作成中..." : "作成"}
+        {launchProjectMutation.isPending ? "保存中..." : "保存"}
       </Button>
     </form>
   );
