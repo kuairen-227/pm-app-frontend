@@ -86,7 +86,7 @@ export const launchProjectHandler = http.post(baseUrl, async () => {
 /**
  * プロジェクト編集 API
  */
-export const UpdateProjectHandler = http.patch(
+export const updateProjectHandler = http.patch(
   `${baseUrl}/:projectId`,
   async () => {
     return createMockResponse(
@@ -102,7 +102,7 @@ export const UpdateProjectHandler = http.patch(
 /**
  * プロジェクト削除 API
  */
-export const DeleteProjectHandler = http.delete(
+export const deleteProjectHandler = http.delete(
   `${baseUrl}/:projectId`,
   async ({ params }) => {
     const { projectId } = params;
