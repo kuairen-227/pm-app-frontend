@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext } from "react";
+import { createContext, use } from "react";
 import type { Project } from "../types/project";
 
 type ProjectProviderProps = {
@@ -8,7 +8,7 @@ type ProjectProviderProps = {
   children: React.ReactNode;
 };
 
-const ProjectContext = createContext<Project | null>(null);
+const ProjectContext = createContext<Project | undefined>(undefined);
 
 export function ProjectProvider({ project, children }: ProjectProviderProps) {
   return (
@@ -19,9 +19,9 @@ export function ProjectProvider({ project, children }: ProjectProviderProps) {
 }
 
 export function useProject() {
-  const context = useContext(ProjectContext);
-  if (!context) {
+  const project = use(ProjectContext);
+  if (!project) {
     throw new Error("useProject must be used within ProjectProvider");
   }
-  return context;
+  return project;
 }
