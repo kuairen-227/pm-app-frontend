@@ -25,7 +25,10 @@ export async function PATCH(
 /**
  * プロジェクト削除 API
  */
-export async function DELETE({ params }: { params: Promise<ParamsProps> }) {
+export async function DELETE(
+  _request: Request,
+  { params }: { params: Promise<ParamsProps> },
+) {
   const { projectId } = await params;
   await deleteProject(projectId);
 
