@@ -1,3 +1,3 @@
 import type { Schemas } from "@/shared/types/api";
 
-export type Project = Schemas["ProjectResponse"];
+export type User = Schemas["UserResponse"];
