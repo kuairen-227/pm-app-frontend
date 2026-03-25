@@ -1,4 +1,4 @@
-import { formatDateTime } from "@/shared/lib/datetime";
+import { formatDateTimeJST } from "@/shared/lib/datetime";
 import type { Project } from "../domain/project";
 import type { ProjectDetailView, ProjectListView } from "../types/view";
 
@@ -8,9 +8,9 @@ export function toProjectListView(project: Project): ProjectListView {
     name: project.name,
     description: project.description,
     createdBy: project.createdBy,
-    createdAt: formatDateTime(project.createdAt),
+    createdAt: formatDateTimeJST(project.createdAt),
     updatedBy: project.updatedBy,
-    updatedAt: formatDateTime(project.updatedAt),
+    updatedAt: formatDateTimeJST(project.updatedAt),
   };
 }
 
@@ -24,8 +24,8 @@ export function toProjectDetailView(project: Project): ProjectDetailView {
       projectRole: m.projectRole,
     })),
     createdBy: project.createdBy,
-    createdAt: formatDateTime(project.createdAt),
+    createdAt: formatDateTimeJST(project.createdAt),
     updatedBy: project.updatedBy,
-    updatedAt: formatDateTime(project.updatedAt),
+    updatedAt: formatDateTimeJST(project.updatedAt),
   };
 }

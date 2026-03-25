@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import { formatInTimeZone } from "date-fns-tz";
 
 export function parseUtcDate(value: string): Date {
   return new Date(value);
@@ -16,6 +17,6 @@ export function formatDate(date: Date): string {
   return format(date, "yyyy/MM/dd");
 }
 
-export function formatDateTime(date: Date): string {
-  return format(date, "yyyy/MM/dd HH:mm");
+export function formatDateTimeJST(date: Date): string {
+  return formatInTimeZone(date, "Asia/Tokyo", "yyyy/MM/dd HH:mm");
 }
