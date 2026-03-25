@@ -1,7 +1,7 @@
 "use client";
 
-import { ProjectForm } from "@/features/project/components/project-form";
 import { useProject } from "@/features/project/context/project-context";
+import { ProjectForm } from "@/features/project/presentation/components/project-form";
 
 export default function ProjectEditPage() {
   const project = useProject();

@@ -1,14 +1,14 @@
 "use client";
 
 import { createContext, use } from "react";
-import type { Project } from "../types/project";
+import type { ProjectDetailView } from "../types/view";
 
 type ProjectProviderProps = {
-  project: Project;
+  project: ProjectDetailView;
   children: React.ReactNode;
 };
 
-const ProjectContext = createContext<Project | undefined>(undefined);
+const ProjectContext = createContext<ProjectDetailView | undefined>(undefined);
 
 export function ProjectProvider({ project, children }: ProjectProviderProps) {
   return (

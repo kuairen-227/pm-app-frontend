@@ -7,8 +7,8 @@ import {
 import { PageHeader } from "@/components/layout/page-layout/page-header";
 import { Empty } from "@/components/state/empty";
 import { Button } from "@/components/ui/button";
-import { listProjects } from "@/features/project/api/listProjects";
-import { ProjectGrid } from "@/features/project/components/project-grid";
+import { ProjectGrid } from "@/features/project/presentation/components/project-grid";
+import { listProjects } from "@/features/project/usecases/queries/listProjects";
 import { routes } from "@/shared/config/route";
 
 export default async function Home() {

@@ -1,4 +1,4 @@
-import { ProjectOverview } from "@/features/project/components/project-overview";
+import { ProjectOverview } from "@/features/project/presentation/components/project-overview";
 
 export default function ProjectOverviewPage() {
   return <ProjectOverview />;

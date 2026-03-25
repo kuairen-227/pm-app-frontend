@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
-import { deleteProject } from "@/features/project/api/deleteProject";
-import { updateProject } from "@/features/project/api/updateProject";
-import type { UpdateProjectRequest } from "@/features/project/types/api";
-import type { Project } from "@/features/project/types/project";
+import type { Project } from "@/features/project/domain/project";
+import type { UpdateProjectRequest } from "@/features/project/types/dto";
+import { deleteProject } from "@/features/project/usecases/mutations/deleteProject";
+import { updateProject } from "@/features/project/usecases/mutations/updateProject";
 
 type ParamsProps = {
   projectId: Project["id"];
@@ -19,7 +19,7 @@ export async function PATCH(
   const body = (await request.json()) as UpdateProjectRequest;
   await updateProject(projectId, body);
 
-  return NextResponse.json({ status: 201 });
+  return NextResponse.json({ status: 204 });
 }
 
 /**

@@ -1,7 +1,7 @@
-import type { Project } from "@/features/project/types/project";
+import type { ListProjectsResponse } from "@/features/project/types/dto";
 import { admin } from "./user";
 
-export const mockProjects: Project[] = [
+export const mockProjects: ListProjectsResponse = [
   {
     id: "3c4b3f41-ec9a-4c63-a7a7-7b89a7e1c001",
     name: "PM App 開発",

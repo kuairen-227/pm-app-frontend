@@ -4,11 +4,11 @@ import {
   PageContainer,
   PageLayout,
 } from "@/components/layout/page-layout";
-import { getProject } from "@/features/project/api/getProject";
-import { ProjectHeader } from "@/features/project/components/project-layout/project-header";
-import { ProjectTabs } from "@/features/project/components/project-tabs";
 import { ProjectProvider } from "@/features/project/context/project-context";
-import type { Project } from "@/features/project/types/project";
+import type { Project } from "@/features/project/domain/project";
+import { ProjectHeader } from "@/features/project/presentation/components/project-layout/project-header";
+import { ProjectTabs } from "@/features/project/presentation/components/project-tabs";
+import { getProject } from "@/features/project/usecases/queries/getProject";
 
 type ProjectLayoutProps = {
   params: Promise<{ projectId: Project["id"] }>;

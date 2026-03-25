@@ -4,7 +4,7 @@ import type {
   GetProjectResponse,
   ListProjectsResponse,
   UpdateProjectResponse,
-} from "@/features/project/types/api";
+} from "@/features/project/types/dto";
 import { mockProjects } from "../data/projects";
 import { getDefaultBaseUrl } from "../utils/apiConfig";
 import { createMockResponse, type MockConfig } from "../utils/mockHelper";
