@@ -1,4 +1,4 @@
-import { formatDateTime } from "@/shared/lib/date";
+import { formatDateTime } from "@/shared/lib/datetime";
 import type { Project } from "../domain/project";
 import type { ProjectDetailView, ProjectListView } from "../types/view";
 
