@@ -429,7 +429,7 @@ export interface components {
              */
             userId: string;
             /** @description プロジェクトロール */
-            role: string;
+            projectRole: string;
         };
         /** @description プロジェクト作成リクエストDTO */
         LaunchProjectRequest: {
