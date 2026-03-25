@@ -32,5 +32,5 @@ export async function DELETE(
   const { projectId } = await params;
   await deleteProject(projectId);
 
-  return NextResponse.json({ status: 201 });
+  return NextResponse.json({ status: 204 });
 }
