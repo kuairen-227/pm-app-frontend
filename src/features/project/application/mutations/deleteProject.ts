@@ -1,8 +1,8 @@
 "server-only";
 
 import { deleteProjectDto } from "../../infrastructure/api/deleteProjectDto";
-import type { ProjectDetailView } from "../types/view";
+import type { DeleteProjectInput } from "../types/input";
 
-export async function deleteProject(projectId: ProjectDetailView["id"]) {
-  await deleteProjectDto(projectId);
+export async function deleteProject(input: DeleteProjectInput) {
+  await deleteProjectDto({ projectId: input.projectId });
 }

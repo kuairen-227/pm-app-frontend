@@ -1,7 +1,7 @@
 import { apiClient } from "@/shared/api/client";
 import { checkApiError, checkApiResponse } from "@/shared/api/error";
 import { DEFAULT_API_VERSION } from "@/shared/config/api";
-import type { GetCurrentUserResponse } from "../types/api";
+import type { GetCurrentUserResponse } from "../dto";
 
 export async function getCurrentUser(): Promise<GetCurrentUserResponse | null> {
   const { response, data, error } = await apiClient.GET(

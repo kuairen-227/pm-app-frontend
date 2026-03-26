@@ -5,17 +5,14 @@ import { checkApiError } from "@/shared/api/error";
 import { DEFAULT_API_VERSION } from "@/shared/config/api";
 import type { UpdateProjectRequest } from "../dto";
 
-export async function updateProjectDto(
-  projectId: string,
-  body: UpdateProjectRequest,
-) {
+export async function updateProjectDto(req: UpdateProjectRequest) {
   const { response, data, error } = await apiClient.PATCH(
     "/api/v{version}/projects/{projectId}",
     {
       params: {
-        path: { version: DEFAULT_API_VERSION, projectId: projectId },
+        path: { version: DEFAULT_API_VERSION, projectId: req.projectId },
       },
-      body,
+      body: { name: req.name, description: req.description },
     },
   );
 

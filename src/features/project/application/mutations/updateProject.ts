@@ -1,12 +1,12 @@
 "server-only";
 
 import { updateProjectDto } from "../../infrastructure/api/updateProjectDto";
-import type { UpdateProjectRequest } from "../../infrastructure/dto";
-import type { ProjectDetailView } from "../types/view";
+import type { UpdateProjectInput } from "../types/input";
 
-export async function updateProject(
-  projectId: ProjectDetailView["id"],
-  data: UpdateProjectRequest,
-) {
-  await updateProjectDto(projectId, data);
+export async function updateProject(input: UpdateProjectInput) {
+  await updateProjectDto({
+    projectId: input.projectId,
+    name: input.name,
+    description: input.description,
+  });
 }

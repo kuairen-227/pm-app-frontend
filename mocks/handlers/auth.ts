@@ -4,7 +4,7 @@ import type {
   LoginRequest,
   LoginResponse,
   RefreshResponse,
-} from "@/features/auth/types/api";
+} from "@/features/auth/infrastructure/dto";
 import { admin } from "../data";
 import { getDefaultBaseUrl } from "../utils/apiConfig";
 import { createMockResponse, type MockConfig } from "../utils/mockHelper";

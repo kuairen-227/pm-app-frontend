@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { LoginForm } from "@/features/auth/components/login-form";
+import { LoginForm } from "@/features/auth/presentation/components/login-form";
 import { routes } from "@/shared/config/route";
 
 export default function LoginPage() {

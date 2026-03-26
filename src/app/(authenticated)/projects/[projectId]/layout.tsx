@@ -20,7 +20,7 @@ export default async function ProjectLayout({
   children,
 }: ProjectLayoutProps) {
   const { projectId } = await params;
-  const project = await getProject(projectId);
+  const project = await getProject({ projectId });
 
   if (!project) notFound();
 

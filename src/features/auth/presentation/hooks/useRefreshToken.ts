@@ -1,7 +1,7 @@
 import { useMutation } from "@tanstack/react-query";
 import type { ApiError } from "@/shared/api/error";
 import { HTTP_METHOD } from "@/shared/consts/api";
-import type { RefreshResponse } from "../types/api";
+import type { RefreshResponse } from "../../infrastructure/dto";
 
 export function useRefreshToken() {
   return useMutation<RefreshResponse, ApiError>({

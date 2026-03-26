@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { AppShell } from "@/components/layout/app-shell";
-import { getCurrentUser } from "@/features/auth/api/getCurrentUser";
+import { getCurrentUser } from "@/features/auth/infrastructure/api/getCurrentUser";
 import { routes } from "@/shared/config/route";
 
 export default async function AuthGuardLayout({

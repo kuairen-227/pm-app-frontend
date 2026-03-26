@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { refreshToken } from "@/features/auth/api/refreshToken";
+import { refreshToken } from "@/features/auth/infrastructure/api/refreshToken";
 
 export async function POST() {
   const { response, data } = await refreshToken();

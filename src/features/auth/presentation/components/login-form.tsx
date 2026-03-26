@@ -12,9 +12,9 @@ import {
   FieldLabel,
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
+import type { LoginFormData } from "../../application/types/form";
 import { useLogin } from "../hooks/useLogin";
 import { loginFormSchema } from "../schema/form";
-import type { LoginFormData } from "../types/form";
 
 type LoginFormProps = {
   onSuccess: () => void;
