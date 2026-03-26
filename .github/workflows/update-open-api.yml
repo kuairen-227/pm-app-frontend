@@ -32,17 +32,16 @@ jobs:
 
       - name: Download swagger artifact
         run: |
-          RUN_ID=$(curl -s \
+          curl -s \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/kuairen-227/pm-app-backend/actions/runs \
-            | jq '.workflow_runs[0].id')
-
-          curl -L \
-            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
-            https://api.github.com/repos/kuairen-227/pm-app-backend/actions/runs/$RUN_ID/artifacts \
+            https://api.github.com/repos/kuairen-227/pm-app-backend/actions/artifacts \
             -o artifacts.json
 
-          ARTIFACT_ID=$(jq '.artifacts[] | select(.name=="swagger") | .id' artifacts.json)
+          ARTIFACT_ID=$(jq '.artifacts
+            | map(select(.name=="swagger"))
+            | sort_by(.created_at)
+            | reverse
+            | .[0].id' artifacts.json)
 
           curl -L \
             -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
