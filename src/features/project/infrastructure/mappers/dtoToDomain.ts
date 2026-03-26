@@ -1,5 +1,5 @@
-import type { Project } from "../domain/project";
-import type { GetProjectResponse, ListProjectsResponse } from "../types/dto";
+import type { Project } from "../../domain/project";
+import type { GetProjectResponse, ListProjectsResponse } from "../dto";
 
 export function toProjectFromList(dto: ListProjectsResponse[number]): Project {
   return {

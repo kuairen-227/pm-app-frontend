@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
-import type { LaunchProjectRequest } from "@/features/project/types/dto";
-import { launchProject } from "@/features/project/usecases/mutations/launchProject";
+import { launchProject } from "@/features/project/application/mutations/launchProject";
+import type { LaunchProjectRequest } from "@/features/project/infrastructure/dto";
 
 export async function POST(request: Request) {
   const body = (await request.json()) as LaunchProjectRequest;

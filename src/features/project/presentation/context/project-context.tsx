@@ -1,7 +1,7 @@
 "use client";
 
 import { createContext, use } from "react";
-import type { ProjectDetailView } from "../types/view";
+import type { ProjectDetailView } from "../../application/types/view";
 
 type ProjectProviderProps = {
   project: ProjectDetailView;

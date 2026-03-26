@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { useProject } from "../../context/project-context";
+import { useProject } from "../context/project-context";
 
 export function ProjectOverview() {
   const project = useProject();

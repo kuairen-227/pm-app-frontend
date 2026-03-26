@@ -5,7 +5,7 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import type { ProjectListView } from "@/features/project/types/view";
+import type { ProjectListView } from "@/features/project/application/types/view";
 
 type ProjectCardProps = {
   project: ProjectListView;

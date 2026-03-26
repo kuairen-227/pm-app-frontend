@@ -14,11 +14,11 @@ import {
 } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
 import { routes } from "@/shared/config/route";
-import { projectFormSchema } from "../../schema/form";
-import type { ProjectFormData } from "../../types/form";
-import type { ProjectDetailView } from "../../types/view";
+import type { ProjectFormData } from "../../application/types/form";
+import type { ProjectDetailView } from "../../application/types/view";
 import { useLaunchProject } from "../hooks/useLaunchProject";
 import { useUpdateProject } from "../hooks/useUpdateProject";
+import { projectFormSchema } from "../schema/form";
 
 type ProjectFormProps = {
   project?: ProjectDetailView;

@@ -1,5 +1,8 @@
-import type { LaunchProjectRequest, UpdateProjectRequest } from "../types/dto";
-import type { ProjectFormData } from "../types/form";
+import type { ProjectFormData } from "../../application/types/form";
+import type {
+  LaunchProjectRequest,
+  UpdateProjectRequest,
+} from "../../infrastructure/dto";
 
 export function toLaunchProjectRequest(
   input: ProjectFormData,

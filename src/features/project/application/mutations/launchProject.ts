@@ -1,8 +1,8 @@
 "server-only";
 
 import { launchProjectDto } from "../../infrastructure/api/launchProjectDto";
-import type { LaunchProjectRequest } from "../../types/dto";
-import type { ProjectDetailView } from "../../types/view";
+import type { LaunchProjectRequest } from "../../infrastructure/dto";
+import type { ProjectDetailView } from "../types/view";
 
 export async function launchProject(
   dto: LaunchProjectRequest,

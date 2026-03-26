@@ -1,4 +1,4 @@
-import type { ListProjectsResponse } from "@/features/project/types/dto";
+import type { ListProjectsResponse } from "@/features/project/infrastructure/dto";
 import { admin } from "./user";
 
 export const mockProjects: ListProjectsResponse = [

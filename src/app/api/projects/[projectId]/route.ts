@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
+import { deleteProject } from "@/features/project/application/mutations/deleteProject";
+import { updateProject } from "@/features/project/application/mutations/updateProject";
 import type { Project } from "@/features/project/domain/project";
-import type { UpdateProjectRequest } from "@/features/project/types/dto";
-import { deleteProject } from "@/features/project/usecases/mutations/deleteProject";
-import { updateProject } from "@/features/project/usecases/mutations/updateProject";
+import type { UpdateProjectRequest } from "@/features/project/infrastructure/dto";
 
 type ParamsProps = {
   projectId: Project["id"];

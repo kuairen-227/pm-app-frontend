@@ -26,11 +26,9 @@ src/
 ```bash
 features/{feature-xxx}
   domain/
-  usecases/
+  application/
   infrastructure/
   presentation/
-  mapper/
-  types/
 ```
 
 ## app/api（Route Handler）
@@ -63,7 +61,6 @@ shared/
 | usecases | Application | 業務ロジック |
 | domain | Domain | Entity |
 | infrastructure | Infrastructure | API通信 |
-| mapper | Mapper | DTO ⇄ Domain ⇄ View |
 | shared/api | HTTP | apiClient |
 | app/api | BFF | Route Handler |
 

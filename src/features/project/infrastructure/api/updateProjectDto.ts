@@ -3,7 +3,7 @@
 import { apiClient } from "@/shared/api/client";
 import { checkApiError } from "@/shared/api/error";
 import { DEFAULT_API_VERSION } from "@/shared/config/api";
-import type { UpdateProjectRequest } from "../../types/dto";
+import type { UpdateProjectRequest } from "../dto";
 
 export async function updateProjectDto(
   projectId: string,

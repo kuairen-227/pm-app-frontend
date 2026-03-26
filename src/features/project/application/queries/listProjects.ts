@@ -1,8 +1,8 @@
 "server-only";
 
 import { listProjectsDto } from "../../infrastructure/api/listProjects";
-import { toProjectListView } from "../../mapper/domainToView";
-import { toProjectFromList } from "../../mapper/dtoToDomain";
+import { toProjectFromList } from "../../infrastructure/mappers/dtoToDomain";
+import { toProjectListView } from "../../presentation/mappers/domainToView";
 
 export async function listProjects() {
   const dto = await listProjectsDto();
