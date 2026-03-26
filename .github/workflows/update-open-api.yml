@@ -82,6 +82,9 @@ jobs:
           body: |
             This PR updates OpenAPI types generated from backend swagger.
 
+            ## Changes
+            - Regenerated `open-api.ts`
+
             ## Source
             Commit: ${{ env.BACKEND_COMMIT_SHA }}
 
