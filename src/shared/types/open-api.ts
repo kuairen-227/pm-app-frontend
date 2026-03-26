@@ -575,6 +575,11 @@ export interface components {
         TicketHistoryResponse: {
             /**
              * Format: guid
+             * @description チケット履歴ID
+             */
+            id: string;
+            /**
+             * Format: guid
              * @description 実行者ID
              */
             actorId: string;
