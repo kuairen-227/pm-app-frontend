@@ -77,7 +77,7 @@ jobs:
         with:
           branch: ${{ env.PR_BRANCH }}
           base: main
-          commit-message: "build(api): :label: update openapi types"
+          commit-message: "build(api): :label: update OpenAPI types — ${{ env.BACKEND_COMMIT_MSG }}"
           title: "build(api): :label: update OpenAPI types — ${{ env.BACKEND_COMMIT_MSG }}"
           body: |
             This PR updates OpenAPI types generated from backend swagger.
