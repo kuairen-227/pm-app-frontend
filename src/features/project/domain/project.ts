@@ -1,3 +1,4 @@
+import type { AuditInfo } from "@/shared/types/domain";
 import type { ProjectMember } from "./projectMember";
 
 export type Project = {
@@ -5,8 +6,4 @@ export type Project = {
   name: string;
   description?: string | null;
   members?: ProjectMember[];
-  createdBy: string;
-  createdAt: Date;
-  updatedBy: string;
-  updatedAt: Date;
-};
+} & AuditInfo;
