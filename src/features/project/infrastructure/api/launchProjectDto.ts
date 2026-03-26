@@ -5,12 +5,12 @@ import { checkApiError } from "@/shared/api/error";
 import { DEFAULT_API_VERSION } from "@/shared/config/api";
 import type { LaunchProjectRequest } from "../dto";
 
-export async function launchProjectDto(req: LaunchProjectRequest) {
+export async function launchProjectDto(request: LaunchProjectRequest) {
   const { response, error } = await apiClient.POST("/api/v{version}/projects", {
     params: { path: { version: DEFAULT_API_VERSION } },
     body: {
-      name: req.name,
-      description: req.description,
+      name: request.name,
+      description: request.description,
     },
   });
 
