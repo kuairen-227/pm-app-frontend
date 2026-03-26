@@ -13,12 +13,19 @@ export function toProjectFromList(dto: ListProjectsResponse[number]): Project {
   };
 }
 
-export function toProjectFromDetail(dto: GetProjectResponse) {
+export function toProjectFromDetail(dto: GetProjectResponse): Project {
   return {
     id: dto.id,
     name: dto.name,
     description: dto.description,
-    members: dto.members,
+    members: dto.members.map((m) => ({
+      userId: m.userId,
+      projectRole: m.projectRole,
+      createdBy: m.createdBy,
+      createdAt: new Date(m.createdAt),
+      updatedBy: m.updatedBy,
+      updatedAt: new Date(m.updatedAt),
+    })),
     createdBy: dto.createdBy,
     createdAt: new Date(dto.createdAt),
     updatedBy: dto.updatedBy,

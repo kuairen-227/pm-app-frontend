@@ -15,6 +15,10 @@ export type ProjectDetailView = {
   members?: {
     userId: string;
     projectRole: string;
+    createdBy: string;
+    createdAt: string;
+    updatedBy: string;
+    updatedAt: string;
   }[];
   createdBy: string;
   createdAt: string;

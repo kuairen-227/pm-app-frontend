@@ -25,6 +25,10 @@ export function toProjectDetailView(project: Project): ProjectDetailView {
     members: project.members?.map((m) => ({
       userId: m.userId,
       projectRole: m.projectRole,
+      createdBy: m.createdBy,
+      createdAt: formatDateTimeJST(m.createdAt),
+      updatedBy: m.updatedBy,
+      updatedAt: formatDateTimeJST(m.updatedAt),
     })),
     createdBy: project.createdBy,
     createdAt: formatDateTimeJST(project.createdAt),

@@ -1,3 +1,5 @@
+import type { ProjectMember } from "./projectMember";
+
 export type Project = {
   id: string;
   name: string;
@@ -7,9 +9,4 @@ export type Project = {
   createdAt: Date;
   updatedBy: string;
   updatedAt: Date;
-};
-
-type ProjectMember = {
-  userId: string;
-  projectRole: string;
 };
