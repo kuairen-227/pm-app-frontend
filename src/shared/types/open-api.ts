@@ -421,8 +421,7 @@ export interface components {
             /** @description プロジェクトメンバー */
             members: components["schemas"]["ProjectMemberResponse"][];
         };
-        /** @description プロジェクトメンバーレスポンスDTO */
-        ProjectMemberResponse: {
+        ProjectMemberResponse: components["schemas"]["AuditInfoResponse"] & {
             /**
              * Format: guid
              * @description ユーザーID
