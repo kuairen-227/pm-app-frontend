@@ -528,6 +528,8 @@ export interface components {
             projectId: string;
             /** @description チケットタイトル */
             title: string;
+            /** @description チケット説明 */
+            description: string;
             /**
              * Format: guid
              * @description 担当者ID
