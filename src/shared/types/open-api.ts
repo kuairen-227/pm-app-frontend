@@ -490,6 +490,11 @@ export interface components {
              * @description チケットID
              */
             id: string;
+            /**
+             * Format: guid
+             * @description プロジェクトID
+             */
+            projectId: string;
             /** @description チケットタイトル */
             title: string;
             /**
@@ -516,6 +521,11 @@ export interface components {
              * @description チケットID
              */
             id: string;
+            /**
+             * Format: guid
+             * @description プロジェクトID
+             */
+            projectId: string;
             /** @description チケットタイトル */
             title: string;
             /**
