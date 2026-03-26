@@ -9,7 +9,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  generate:
+  generate-openapi:
     runs-on: ubuntu-latest
     env:
       HUSKY: 0
