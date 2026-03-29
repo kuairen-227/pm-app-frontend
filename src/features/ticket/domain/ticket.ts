@@ -9,8 +9,8 @@ export type Ticket = {
   id: string;
   projectId: string;
   title: string;
-  description: string;
-  assigneeId: string | null;
+  description: string | null;
+  assigneeId?: string | null;
   status: TicketStatus;
   schedule: TicketSchedule;
   completionCriteria: TicketCompletionCriterion[];
