@@ -21,6 +21,7 @@
     "https://ui.shadcn.com/schema.json": true
   },
   // 拡張機能設定
+  "biome.configurationPath": "biome.json",
   "conventionalCommits.scopes": [
     // Folder
     "api",
