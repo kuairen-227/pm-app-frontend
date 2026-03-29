@@ -579,8 +579,7 @@ export interface components {
             /** @description コメント内容 */
             content: string;
         };
-        /** @description チケット履歴レスポンスDTO */
-        TicketHistoryResponse: {
+        TicketHistoryResponse: components["schemas"]["AuditInfoResponse"] & {
             /**
              * Format: guid
              * @description チケット履歴ID
