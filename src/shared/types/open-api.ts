@@ -554,15 +554,23 @@ export interface components {
             /** @description チケット履歴 */
             histories: components["schemas"]["TicketHistoryResponse"][];
         };
-        /** @description チケット完了条件レスポンスDTO */
-        TicketCompletionCriterionResponse: {
+        TicketCompletionCriterionResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description チケット完了条件ID
+             */
+            id: string;
             /** @description 完了条件 */
             criterion: string;
             /** @description 完了状況 */
             isCompleted: boolean;
         };
-        /** @description チケットコメントレスポンスDTO */
-        TicketCommentResponse: {
+        TicketCommentResponse: components["schemas"]["AuditInfoResponse"] & {
+            /**
+             * Format: guid
+             * @description チケットコメントID
+             */
+            id: string;
             /**
              * Format: guid
              * @description 投稿者ID
