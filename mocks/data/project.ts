@@ -1,9 +1,11 @@
 import type { ListProjectsResponse } from "@/features/project/infrastructure/dto";
 import { admin } from "./user";
 
+export const PROJECT_ID_1 = "3c4b3f41-ec9a-4c63-a7a7-7b89a7e1c001" as const;
+
 export const mockProjects: ListProjectsResponse = [
   {
-    id: "3c4b3f41-ec9a-4c63-a7a7-7b89a7e1c001",
+    id: PROJECT_ID_1,
     name: "PM App 開発",
     description: "PM App の開発",
     createdBy: admin.id,
@@ -47,4 +49,4 @@ export const mockProjects: ListProjectsResponse = [
     updatedBy: admin.id,
     updatedAt: "2026-03-01T08:10:00Z",
   },
-];
+] satisfies readonly ListProjectsResponse[number][];
