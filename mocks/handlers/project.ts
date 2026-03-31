@@ -56,7 +56,7 @@ export const listProjectsHandler = http.get(baseUrl, async () => {
 export const getProjectHandler = http.get(
   `${baseUrl}/:projectId`,
   async ({ params }) => {
-    const { projectId } = params;
+    const projectId = String(params.projectId);
     const project = mockProjects.find((p) => p.id === projectId);
 
     return createMockResponse(
@@ -105,7 +105,7 @@ export const updateProjectHandler = http.patch(
 export const deleteProjectHandler = http.delete(
   `${baseUrl}/:projectId`,
   async ({ params }) => {
-    const { projectId } = params;
+    const projectId = String(params.projectId);
     const project = mockProjects.find((p) => p.id === projectId);
 
     return createMockResponse(
