@@ -15,10 +15,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { routes } from "@/shared/config/route";
 import type { ProjectFormData } from "../../application/types/form";
-import type { ProjectDetailView } from "../../application/types/view";
 import { useLaunchProject } from "../hooks/useLaunchProject";
 import { useUpdateProject } from "../hooks/useUpdateProject";
 import { projectFormSchema } from "../schema/form";
+import type { ProjectDetailView } from "../types/view";
 
 type ProjectFormProps = {
   project?: ProjectDetailView;

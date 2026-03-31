@@ -1,9 +1,6 @@
 import { formatDateTimeJST } from "@/shared/lib/datetime";
-import type {
-  ProjectDetailView,
-  ProjectListView,
-} from "../../application/types/view";
 import type { Project } from "../../domain/project";
+import type { ProjectDetailView, ProjectListView } from "../types/view";
 
 export function toProjectListView(project: Project): ProjectListView {
   return {

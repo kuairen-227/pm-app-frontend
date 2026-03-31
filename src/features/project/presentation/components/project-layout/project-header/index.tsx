@@ -1,4 +1,4 @@
-import type { ProjectDetailView } from "@/features/project/application/types/view";
+import type { ProjectDetailView } from "@/features/project/presentation/types/view";
 import { ProjectHeaderActions } from "./project-header-actions";
 
 type ProjectHeaderProps = {

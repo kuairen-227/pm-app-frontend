@@ -1,4 +1,4 @@
-import type { ProjectListView } from "@/features/project/application/types/view";
+import type { ProjectListView } from "@/features/project/presentation/types/view";
 import { ProjectCard } from "./project-card";
 
 type ProjectGridProps = {
