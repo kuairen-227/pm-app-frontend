@@ -26,9 +26,11 @@ type RequestPathParams<T extends keyof operations> = operations[T] extends {
   : Empty;
 
 type RequestQueryParams<T extends keyof operations> = operations[T] extends {
-  parameters: { query: infer Q };
+  parameters: infer P;
 }
-  ? Q
+  ? P extends { query?: infer QQ }
+    ? QQ
+    : Empty
   : Empty;
 
 type RequestBody<T extends keyof operations> = operations[T] extends {
