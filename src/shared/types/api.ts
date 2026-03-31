@@ -5,6 +5,13 @@ import type { components, operations } from "./open-api";
 export type ApiVersion = (typeof API_VERSION)[keyof typeof API_VERSION];
 export type HttpMethod = (typeof HTTP_METHOD)[keyof typeof HTTP_METHOD];
 export type SortOrder = (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
+export type PagedResult<T> = {
+  items: T[];
+  totalCount: number;
+  pageNumber: number;
+  pageSize: number;
+  totalPages: number;
+};
 
 // OpenAPI の型をラップ
 export type Schemas = components["schemas"];
