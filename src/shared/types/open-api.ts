@@ -347,11 +347,12 @@ export interface components {
             /** @description トレースID */
             traceId?: string;
         };
+        /** @description ログインリクエストDTO */
         LoginRequest: {
+            /** @description メールアドレス */
             email?: string;
+            /** @description パスワード */
             password?: string;
-            twoFactorCode?: string | null;
-            twoFactorRecoveryCode?: string | null;
         };
         /** @description リフレッシュレスポンスDTO */
         RefreshResponse: {
