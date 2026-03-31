@@ -515,6 +515,11 @@ export interface components {
             /** @description ステータス */
             status: string;
         };
+        /**
+         * @description ソート順
+         * @enum {integer}
+         */
+        SortOrder: 0 | 1;
         TicketDetailResponse: components["schemas"]["AuditInfoResponse"] & {
             /**
              * Format: guid
@@ -611,8 +616,10 @@ export interface components {
         };
         /** @description チケット作成リクエストDTO */
         CreateTicketRequest: {
-            /** @description タイトル */
+            /** @description チケットタイトル */
             title: string;
+            /** @description チケット説明 */
+            description: string;
             /**
              * Format: guid
              * @description 担当者
@@ -620,19 +627,24 @@ export interface components {
             assigneeId?: string | null;
             /**
              * Format: date
-             * @description 期限日
+             * @description 開始日
              */
-            deadline?: string | null;
+            startDate?: string | null;
+            /**
+             * Format: date
+             * @description 終了日
+             */
+            endDate?: string | null;
             /** @description 完了条件 */
-            completionCriteria?: string | null;
+            completionCriteria?: string[];
             /** @description 通知対象ユーザー */
             notificationRecipientIds?: string[];
         };
         /** @description チケット編集リクエストDTO */
         UpdateTicketRequest: {
-            /** @description タイトル */
+            /** @description チケットタイトル */
             title?: components["schemas"]["PatchFieldOfString"];
-            /** @description 説明文 */
+            /** @description チケット説明 */
             description?: components["schemas"]["PatchFieldOfString"];
             /** @description 担当者 */
             assigneeId?: components["schemas"]["PatchFieldOfNullableGuid"];
@@ -1262,11 +1274,34 @@ export interface operations {
     };
     Tickets_List: {
         parameters: {
-            query?: never;
+            query?: {
+                /** @description タイトル */
+                Title?: string | null;
+                /** @description 担当者ID */
+                AssigneeId?: string | null;
+                /** @description ステータス */
+                Status?: string | null;
+                /** @description 開始日From */
+                StartDateFrom?: string | null;
+                /** @description 開始日To */
+                StartDateTo?: string | null;
+                /** @description 終了日From */
+                EndDateFrom?: string | null;
+                /** @description 終了日To */
+                EndDateTo?: string | null;
+                /** @description ページ番号 */
+                PageNumber?: number;
+                /** @description ページサイズ */
+                PageSize?: number;
+                /** @description ソート対象 */
+                SortBy?: string | null;
+                /** @description ソート順 */
+                SortOrder?: components["schemas"]["SortOrder"];
+            };
             header?: never;
             path: {
-                version: string;
                 projectId: string;
+                version: string;
             };
             cookie?: never;
         };
