@@ -10,3 +10,8 @@ export const HTTP_METHOD = {
   PATCH: "PATCH",
   DELETE: "DELETE",
 };
+
+export const SORT_ORDER = {
+  ASC: "Asc",
+  DESC: "Desc",
+} as const;

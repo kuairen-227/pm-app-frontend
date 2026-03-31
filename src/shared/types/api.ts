@@ -1,9 +1,10 @@
-import type { API_VERSION, HTTP_METHOD } from "../consts/api";
+import type { API_VERSION, HTTP_METHOD, SORT_ORDER } from "../consts/api";
 import type { components, operations } from "./open-api";
 
 // API 関連
 export type ApiVersion = (typeof API_VERSION)[keyof typeof API_VERSION];
 export type HttpMethod = (typeof HTTP_METHOD)[keyof typeof HTTP_METHOD];
+export type SortOrder = (typeof SORT_ORDER)[keyof typeof SORT_ORDER];
 
 // OpenAPI の型をラップ
 export type Schemas = components["schemas"];
@@ -12,7 +13,7 @@ export type ErrorResponse = components["schemas"]["ErrorResponse"];
 // Utility Types
 type Empty = Record<string, never>;
 // biome-ignore lint/complexity/noBannedTypes: never 等では交差型との相性が悪く代替できないため
-type Clean<T> = T extends Empty ? {} : T;
+type Clean<T> = [T] extends [Empty | never] ? {} : T;
 type RemoveVersion<T> = T extends { version: string } ? Omit<T, "version"> : T;
 type Merge<T> = {
   [K in keyof T]: T[K];
@@ -29,7 +30,9 @@ type RequestQueryParams<T extends keyof operations> = operations[T] extends {
   parameters: infer P;
 }
   ? P extends { query?: infer QQ }
-    ? QQ
+    ? QQ extends never | undefined // never の場合は空オブジェクトに変換
+      ? Empty
+      : QQ
     : Empty
   : Empty;
 
