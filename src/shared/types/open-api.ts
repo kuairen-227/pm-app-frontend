@@ -517,9 +517,9 @@ export interface components {
         };
         /**
          * @description ソート順
-         * @enum {integer}
+         * @enum {string}
          */
-        SortOrder: 0 | 1;
+        SortOrder: "Asc" | "Desc";
         TicketDetailResponse: components["schemas"]["AuditInfoResponse"] & {
             /**
              * Format: guid
@@ -698,8 +698,8 @@ export interface components {
         ICompletionCriterionOperationDto: {
             type?: components["schemas"]["CompletionCriterionOperationType"];
         };
-        /** @enum {integer} */
-        CompletionCriterionOperationType: 0 | 1 | 2 | 3 | 4;
+        /** @enum {string} */
+        CompletionCriterionOperationType: "Add" | "Edit" | "Delete" | "Complete" | "Reopen";
         /** @description チケット完了条件追加リクエストDTO */
         AddCompletionCriterionRequest: {
             /** @description 完了条件 */
