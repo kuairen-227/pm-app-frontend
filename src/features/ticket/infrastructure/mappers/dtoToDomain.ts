@@ -1,10 +1,23 @@
 import { parseDateOnly, parseUtcDate } from "@/shared/lib/datetime";
+import type { PagedResult } from "@/shared/types/api";
 import type { Ticket } from "../../domain/ticket";
 import { TicketHistoryAction } from "../../domain/ticketHistoryAction";
 import type { TicketHistoryChange } from "../../domain/ticketHistoryChange";
 import type { TicketSchedule } from "../../domain/ticketSchedule";
 import { TicketStatus } from "../../domain/ticketStatus";
 import type { GetTicketResponse, ListTicketsResponse } from "../dto";
+
+export function toTicketPageFromListDto(
+  dto: ListTicketsResponse,
+): PagedResult<Ticket> {
+  return {
+    items: dto.items.map(toTicketFromListDto),
+    totalCount: dto.totalCount,
+    pageNumber: dto.pageNumber,
+    pageSize: dto.pageSize,
+    totalPages: dto.totalPages,
+  };
+}
 
 export function toTicketFromListDto(
   dto: ListTicketsResponse["items"][number],
